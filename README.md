@@ -13,6 +13,10 @@ Entre los errores mas comunes, se encuentran los siguientes:
 + La configuración de seguridad del servidor de aplicaciones, frameworks, librerías, bases de datos... no tiene establecidas valores seguros.
 + El servidor no envía cabeceras seguras y/o directivas, o no están establecidas con valores seguros.
 + El software esta desactualizado o es vulnerable.
++ 
+### CVE - 2024-26092
+Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en campos de formularios vulnerables.
+
 
 ### Contramedidas
 
@@ -25,6 +29,14 @@ Entre los errores mas comunes, se encuentran los siguientes:
 
 ## Vulnerable and Outdated Components 
 ### Descripción
+
+El problema de los compenentes vulnerables es uno de los mas dificiles de categorizar, pues no tienen CVEs asignados, teniendo por defecto una puntuacion de CWe de 5.0. 
+Alguno de los errores que lo componen son:
++ No saber la versión de todos los componentes en uso. Esto incluye tambien las dependencias de los componentes.
++ Usar un software vulnerable, sin soporte o desactualizado. Incluyendo Sistema Operativo, servidor web, SGBD, APIs, librerias...
++ No escanear frecuentemente por vulnerabilidades y no suscribirse a boletines relacionados a los componentes que uses.
++ No asegurar las configuraciones de los componentes.
++ Los desarrolladores de software no comprueban las compatibilidades de su software con las librerias que han sido actualizadas o parcheadas. 
 
 ### CVE
 
