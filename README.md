@@ -1,5 +1,10 @@
 # Proyecto1_CybersecurityConsulting
 ## Introducción
+La empresa TrustShield Financial nos ha contratado para la realización de un análisisde su estructura y así identificar vulnerabilidades que puedan poner en peligro la confidencialidad, integridad y disponibilidad de sus datos.
+
+Hemos decidido centrarnos en las vulnerabilidades de sus aplicaciones web ya que esta es la cara que da la empresa a internet, y por lo tanto, a gran parte de sus usuarios y a posibles atacantes.
+
+Las categorías de vulnerabilidad han sido elegidas por su número de incidentes en los últimos años y como de graves serían para TrustShield Financial en caso de sufrirlas.
 ## Categorías de vulnerabilidades
 ### Security logging and monitoring failures
 #### Descripción
@@ -10,7 +15,10 @@ Si no se monitoriza y registra las actividades de una aplicación web o no se ha
 + Los logs solo se almacenan localmente y con una sola copia en lugar de en otro dispositivo y, preferiblemente, más de una copia.
 + No hay procesos para escalar la respuesta o no son efectivos.
 + Los pentesting y escaneos realizados por herramientas para pruebas dinámicas de seguridad de aplicaciones (DAST) no generan alertas.
+
 Además, si los logs y alertas son visibles a los usuarios se puede filtrar información.
+
+Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy importante el cubrirla ya que facilitaría la detección y respuesta a otros ataques y el análisis forense tras sufrir un ataque.
 #### Contramedidas
 + Todos los logins, control de accesos y fallos en la validación del input por parte del servidor se añadan a un log con información suficiente sobre los usuarios para detectar cuentas sospechosas y mantener dichos logs el tiempo suficiente para realizar un análisis forense en caso de que ocurriera algo.
 + Asegurarse de que los logs se generan en un formato en el que un gestor de logs pueda comprender.
@@ -23,6 +31,8 @@ Además, si los logs y alertas son visibles a los usuarios se puede filtrar info
 Los problemas de SSRF ocurren cuando una aplicación web realiza una consulta HTTP sin validar la URL suministrada por el usuario. Esto permite a un atacante forzar a la aplicación web a enviar una solicitud a la estructura interna de la red donde se aloja, incluso estando protegido por un firewall, VPN u otro tipo de lista de control de acceso a la red (ACL) y así obtener información, escalar privilegios o ejecutar código remotamente en un servidor.
 
 Con las facilidades y conveniencias proporcionadas a los usuarios por las aplicaciones web actuales el número de incidencias de SSRF está en aumento.
+
+Esta vulnerabilidad sería muy grave para TrustShield Financial, ya que un atacante podría acceder o incluso manipular información confidencial simplemente cambiando una URL si tiene algo de conocimento sobre la red de la empresa.
 #### Contramedidas
 Desde la capa de red podríamos:
 + Separar los sistemas que se encargan de las solicitudes externas del resto de la red, reduciendo el impacto de un SSRF.
