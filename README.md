@@ -1,6 +1,6 @@
-## Proyecto1_CybersecurityConsulting
+# Proyecto1_CybersecurityConsulting
 
-### Broken Access Control
+## Broken Access Control
 
 **Descripción**
 
@@ -34,7 +34,7 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
-#### CVE-2024-4263
+### CVE-2024-4263
 
 Este es una de las vulnerabilidades que hemos encontrado la cuál los usuarios con pocos privilegios con solo permisos de edición (EDIT) pueden eliminar cualquier dato. Este problema está por la poca validación de las solicitudes DELEte que con tan sólo permisos EDIT puede hacer eliminaciones de datos no autorizados.
 
@@ -42,7 +42,7 @@ Aunque en la documentación oficial sólo pone que los usuarios con permiso EDIT
 
 Según CVSS nos encontramos contra una vulnerabilidad **MEDIA** con una nota de **5.4**
 
-#### CVE-2024-22234
+### CVE-2024-22234
 Esta vulnerabilidad trata de que cuando utilizas el método *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)* directamente se le pasa un parámetro de autenticación que sea nulo y devuelve un retorno verdadero erróneo.
 
 La forma en la que no es vulnerable si cualquiera de los siguientes es cierto:  
@@ -55,7 +55,7 @@ Según CVSS nos encontramos con una vulnerabilidad **ALTA** con una nota de **7.
 
 ****
 
-### Cryptographic Failures
+## Cryptographic Failures
 
 **Descripción**
 
@@ -95,6 +95,22 @@ Estas son algunas de las cosas que tenemos que verificar para saber como preveni
 Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
 
-#### CVE-2024-45402
+### CVE-2024-45402
 
-#### CVE-2024-6189
+**Título: Picotls Double Free**
+
+**Descripción**
+
+Picotls es una biblioteca de protocolos TLS que permite a los usuarios seleccionar diferentes backend criptográficos en función de su uso. Cuando analizas un mensaje TLS falsificado, los picolts pueden liberar la misma memoria dos veces. Este doble liberación de memoria ocurre durante la eliminación de múltiples objetos sin ninguna llamada intermedia a malloc. Típicamente, esto desencadena la implementación de malloc para detectar el error y abortar el proceso. Pero dependiendo de las partes internas de malloc y el backend criptográfico que se este utilizando, la falla prodría conducir a un escenario de uso despues de la liberación lo que permitiría la ejecución arbitaria de codigo.
+
+Según CVSS estamos ante una vulnerabilidad de gravedad **ALTA** con una puntuación de **8.6**
+
+### CVE-2024-6189
+
+**Título: Tenda A301 WifiExtraSet fromSetWirelessRepeat stack-based overflow**
+
+**Descripción**
+
+Esta vulnerabilidad afecta a la función *fromSetWirelessRepeat* del archivo */goform/WifiExtraSet*. La manipulación del argumento wpapsk_crypto conduce a un desbordamiento de búfer basado en pila. Es posible lanzar el ataque de forma remota.
+
+Esta vulnerabiliddad desde la versión 2.0 siguiendo la versión 3.0, 3.1, 4.0 son todas vulnerabilidades de gravedad **ALTA** con estas respectivas notas **9.0, 8.8, 8.8, 8.7**
