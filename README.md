@@ -2,25 +2,37 @@
 
 ### Broken Access Control
 
-Hemos seleccionado esta vulnerabilidad ya que tiene una incidencia promedio de un 3.81%
+**Descripción**
 
 Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que se le había dado al usuario. Esto puede producir que el ciberdelincuente pueda compartir informacion la cual no está autorizado, modificar dato o incluso la destruccion de los mismos. Algunas de las vulnerabilidades más comunes de este tipo son:
 
 - Permitir ver o editar la cuenta de otra persona.
+
 - Acceder a APIs con controles de acceso inexistentes para los métodos POST, PUT, DELETE.
+
 - Forzar la navegación a páginas autenticadas siendo un usuario no autenticado o entrar a páginas las cuales un usuario regular no podría visitar.
 
-*¿Cómo podemos prevenirlo?*
+- Eludir las comprobaciones de control de acceso modificando la URL (alteración de parámetros o navegación forzada), el estado interno de la aplicación o la página HTML, o mediante el uso de una herramienta que modifique los pedidos a APIs.
 
-Unas de las posibilidades que tenemos es que denegemos por defecto todo menos los recursos públicos.
+- Elevación de privilegios. Actuar como usuario sin haber iniciado sesión o actuar como administrador cuando se inició sesión como usuario regular.
 
-Otras de las medidas es reistrar las fallas de control de acceso y alertar a los aministradores cuando por ejemplo estas fallas sean repetidas.
+- Configuraciones incorrectas de CORS (uso compartido de recursos de origen cruzado) que permiten el acceso a APIs desde orígenes no autorizados o confiables.
 
-También podriamos limitar la tasas de acceso permitidos a las APIs y controladores de forma que podamos minimizar los daños.
+**Contramedidas**
 
-****
+- Unas de las posibilidades que tenemos es que denegemos por defecto todo menos los recursos públicos.
 
-Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo.
+- Otras de las medidas es reistrar las fallas de control de acceso y alertar a los aministradores cuando por ejemplo estas fallas sean repetidas.
+
+- También podriamos limitar la tasas de acceso permitidos a las APIs y controladores de forma que podamos minimizar los daños.
+
+- Deshabilite el listado de directorios del servidor web y asegúrese de que los archivos de metadatos (por ejemplo una carpeta .git) y archivos de respaldo no puedan ser accedidos a partir de la raíz del sitio web.
+
+- Implemente mecanismos de control de acceso una única vez y reutilícelos en toda la aplicación, incluyendo la minimización del uso de CORS.
+
+- El control de acceso debe implementar su cumplimiento a nivel de dato y no permitir que el usuario pueda crear, leer, actulizar o borrar cualquier dato.
+
+Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
 #### CVE-2024-4263
 
@@ -40,3 +52,49 @@ La forma en la que no es vulnerable si cualquiera de los siguientes es cierto:
 - La aplicación solo usa *isFullyAuthenticated*
 
 Según CVSS nos encontramos con una vulnerabilidad **ALTA** con una nota de **7.4**
+
+****
+
+### Cryptographic Failures
+
+**Descripción**
+
+Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas, números dde tarjetas de crédditom registros médicos, información personal, etc. Ya que estas series de datos deben tener una protección adiccional, principalmente si están sujeto a  leyes de privacidad como pueden ser (Reglamento General de Protección de Datos de la UE) o regulaciones como (protección de datos financieros como el Estándar de Seguridad de Datos de PCI -PCI DSS-). Algunas de las preguntas que nos tenemos que hacer para estos datos son:
+
+- ¿Se utilizan algoritmos o protocolos criptográficos antiguos o débiles de forma predeterminada o en código antiguo?
+- ¿Se utilizan claves criptográficas predeterminadas, se generan o reutilizan claves criptográficas débiles, o es inexistente la gestión o rotación de claves adecuadas?
+- ¿Se incluyen las claves criptográficas en los repositorios de código fuente?
+- ¿No es forzado el cifrado, por ejemplo, faltan las directivas de seguridad de los encabezados HTTP (navegador) o los encabezados?
+- ¿El certificado de servidor recibido y la cadena de confianza se encuentran debidamente validados?
+- ¿Las contraseñas se utilizan como claves criptográficas en ausencia de una función de derivación de claves a partir de contraseñas?
+- ¿Se utilizan funciones hash en obsoletas, como MD5 o SHA1, o se utilizan funciones hash no criptográficas cuando se necesitan funciones hash criptográficas?
+
+
+**Contramedidas**
+
+Estas son algunas de las cosas que tenemos que verificar para saber como prevenir estos ataques.
+
+- Clasifique los datos procesados, almacenados o transmitidos por una aplicación. Identifique qué datos son confidenciales de acuerdo con las leyes de privacidad, los requisitos reglamentarios o las necesidades comerciales.
+
+- No almacene datos sensibles innecesariamente. Descártelos lo antes posible o utilice una utilización de tokens compatible con PCI DSS o incluso el truncamiento. Los datos que no se conservan no se pueden robar.
+
+- Asegúrese de cifrar todos los datos sensibles en reposo (almacenamiento).
+
+- Garantice la implementación de algoritmos, protocolos y claves que utilicen estándares sólidos y actualizados; utilice una gestión de claves adecuada.
+
+- Deshabilite el almacenamiento en caché para respuestas que contengan datos sensibles.
+
+- Aplique los controles de seguridad requeridos según la clasificación de los datos.
+
+- No utilice protocolos antiguos como FTP y SMTP para transportar datos sensibles.
+
+- Las claves deben generarse criptográficamente al azar y almacenarse en la memoria como arrays de bytes. Si se utiliza una contraseña, debe convertirse en una clave mediante una función adecuada de derivación de claves basada en contraseña.
+
+- Evite las funciones criptográficas y los esquemas de relleno(padding) en desuso, como MD5, SHA1, PKCS número 1 v1.5.
+
+Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
+
+
+#### CVE-2024-45402
+
+#### CVE-2024-6189
