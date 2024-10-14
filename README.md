@@ -14,7 +14,8 @@ Entre los errores mas comunes, se encuentran los siguientes:
 + El servidor no envía cabeceras seguras y/o directivas, o no están establecidas con valores seguros.
 + El software esta desactualizado o es vulnerable.
 
-### CVE
+### Identificación de CVEs
+
 #### CVE - 2024-26092
 + Gravedad: Medio
 + Puntuación CVSS: 5.4 (Base Score)
@@ -45,7 +46,8 @@ Alguno de los errores que lo componen son:
 + No asegurar las configuraciones de los componentes.
 + Los desarrolladores de software no comprueban las compatibilidades de su software con las librerias que han sido actualizadas o parcheadas. 
 
-### CVE
+### Identificación de CVEs
+
 
 #### CVE 2024-27395
 + Gravedad: Medio
