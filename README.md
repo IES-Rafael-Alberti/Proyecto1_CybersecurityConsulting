@@ -12,8 +12,12 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
 #### **CVE-2022-44004**      	
 Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña.  
 
+Es clasificada con una puntuación de 9.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
+
 #### CVE-2023-21367	
 En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
+
+Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel de seguridad MEDIA.
 
 ### **Contramedidas**
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
@@ -35,15 +39,18 @@ En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escr
 - Limitar el consumo de recursos por usuario o servicio.      
 <br>
 
-## Fallas en el Software y en la Integridad de los Datos
+## Software and Data Integrity Failures
 
 ### **Descripción**
 
 Los fallos de integridad en software y datos ocurren el código o la infraestructura no están correctamente protegidos contra modificaciones no autorizadas. Estan pueden provenir deaplicaciones que dependan de repositorios, plugins, bibliotecas... También puede suceder cuando una aplicación distribuye actualizaciones de software sin una previa verificación de las mismas, lo que puede facilitar a los atacantes dristribuir versiones maliciosas. 
 
 ### **CVE**
-#### **CVE-1**
-#### **CVE-2**
+#### **CVE-2022-31609**
+
+Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitia que una máquina invitada pudiese asignar recursos de los cuales no tenia autorización. Esto podía llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o compremeter el sistema. 
+
+Es clasificada con una puntuación de 7.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
 ### **Contramedidas**
 - Verificación de origen: Utiliza firmas digitales para confirmar que el software o los datos provienen de fuentes legítimas y no han sido modificados.
