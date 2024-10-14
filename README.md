@@ -17,7 +17,14 @@ Si no se monitoriza y registra las actividades de una aplicación web o no se ha
 
 Además, si los logs y alertas son visibles a todos y no solo a las personas responsables se puede filtrar información.
 
-Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy importante el cubrirla ya que facilitaría la detección y respuesta a otros ataques y el análisis forense tras sufrir un ataque.
+Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy importante el solventarlas ya que facilitaría la detección y respuesta a otros ataques y el análisis forense tras sufrir un ataque. Algunas maneras para cubrir este tipo de vulnerabilidad sería:
+
++ Todos los logins, control de accesos y fallos en la validación del input por parte del servidor se añadan a un log con información    suficiente sobre los usuarios para detectar cuentas sospechosas y mantener dichos logs el tiempo suficiente para realizar un análisis forense en caso de que ocurriera algo.
++ Asegurarse de que los logs se generan en un formato en el que un gestor de logs pueda comprender.
++ Asegurarse de que los datos de los logs están codificados correctamente para prevenir inyecciones o ataques a los sistemas de log o monitoreo y darnos una imagen distinta de la situación de la real.
++ Asegurarse de que transacciones de importancia (por ejemplo agregar información a una tabla de una base de datos) tengan un seguimiento de auditoría con controles de integridad para prevenir que se manipulen o eliminen.
++ Los equipos de DevSecOps deberían de monitorizar y alertar de manera efectiva para detectar actividad sospechosa y responder rápidamente.
++ Establecer o adoptar un plan de respuesta y recuperación a incidentes.
 
 ### Server-side request forgery (SSRF)
 #### Descripción
