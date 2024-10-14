@@ -53,14 +53,14 @@ Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del
 Es clasificada con una puntuación de 7.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
 ### **Contramedidas**
-- Verificación de origen: Utiliza firmas digitales para confirmar que el software o los datos provienen de fuentes legítimas y no han sido modificados.
+- Verificación del origen de los software o datos. Tendremos que comprobar que estos provienen de fuentes legitimas y no se han alterado.
 
-- Uso de repositorios confiables: Asegúrate de que las bibliotecas y dependencias se obtienen de repositorios confiables. Para perfiles de riesgo alto, considera alojarlas en un repositorio interno que haya sido analizado previamente.
+- Tendremos que asegurarnos que las bibliotecas y dependencias que utilizamos provienen de repositorios confiables. Comentar que para cargos de alto riesgo es mejor utilizarlos en repositorios locales previamente analizados.
 
-- Análisis de vulnerabilidades: Implementa herramientas de análisis de componentes de terceros, como OWASP Dependency Check o OWASP CycloneDX, para detectar vulnerabilidades conocidas en tus dependencias.
+- Verifica la ausencia de vulnerabilidades conocidas con el uso de herramientas como OWASP Dependency Check u OWASP CycloneDX.
 
-- Revisión de cambios: Establece un proceso de revisión de cambios en el código y configuraciones para minimizar el riesgo de introducir código malicioso en tu pipeline.
+- Revisión de cambios en el código y las configuraciones para disminuir el riesgo de introducir código malicioso. 
 
-- Controles en el pipeline CI/CD: Asegúrate de que tu pipeline de CI/CD tenga controles de acceso adecuados, segregación de funciones y configuraciones que protejan la integridad del código durante el proceso de construcción y despliegue.
+- Asegúrese que su pipeline CI/CD posee adecuados controles de acceso, segregación y configuraciones que permitan asegurar la integridad del código a través del proceso de build y despliegue.
 
-- Seguridad de datos: No envíes datos sin cifrar o firmar a clientes no confiables sin alguna forma de verificación de integridad, como una firma electrónica, para detectar modificaciones o reutilización no autorizada de datos serializados.
+- Asegúrate de no enviar datos sin proteger (sin cifrado o firma) a clientes no confiables. Siempre utiliza algún método para verificar la integridad de los datos, como una firma electrónica, para detectar posibles modificaciones o reutilización de datos que hayan sido manipulados o serializados anteriormente.
