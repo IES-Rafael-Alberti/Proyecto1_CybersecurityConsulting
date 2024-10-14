@@ -64,3 +64,15 @@ Es clasificada con una puntuación de 7.8 en CVSS, lo que la coloca en un nivel 
 - Asegúrese que su pipeline CI/CD posee adecuados controles de acceso, segregación y configuraciones que permitan asegurar la integridad del código a través del proceso de build y despliegue.
 
 - Asegúrate de no enviar datos sin proteger (sin cifrado o firma) a clientes no confiables. Siempre utiliza algún método para verificar la integridad de los datos, como una firma electrónica, para detectar posibles modificaciones o reutilización de datos que hayan sido manipulados o serializados anteriormente.
+
+## Conclusión
+
+Durante la duración de este proyecto hemos estado analizando las vulnerabilidades más comunes que pueden afectar a las aplicaciones web de una empresa. Para entenderlo mejor, estas vulnerabilidades son como si hubiese un agujero en la seguridad de la empresa. Este agujero lo podrían usar los ciberdelincuentes para acceder a datos sensibles o causar algún problema en el sistema de la empresa.  
+
+Hemos identificado numerosas vulnerabilidades, como los fallos criptográficos que permiten que datos importantes como contraseñas o información bancaria no tenga uan protección ajustada a su importancia; o el control de acceso roto , donde usuarios sin autorización pueden acceder y modificar información. También hemos podido ver problemas en la configuración de seguridad , donde los sistemas utilizan componentes desactualizados o estan mal configurados con lo que hacen que estos no sean seguros. 
+
+Hemos añadido a cada explicación de las vulnerabilidades, casos concretos o ejemplos llamados CVE. Estos son fallos que han sido resgitrados y que se han ido descrubrierto en algún sistema. Cada uno tendrá una gravedad diferente y dependiendo de lo críticas que sean causará más o menos problemas.
+
+A parte de definir y poner ejemplo de las vulnerabilidades, también hemos realizado contramedidas que pueden ayudar a minimizar los riesgos de estas. Algunas de las recomendaciones pasan por una correcta configuración de los permisos de acceso, actualización continua de todos los compenentes y sistemas, el uso de cifrado para datos sencibles o el monitoreo de las actividades de los sistemas para la detección de posibles ataques o fallos. Lo que queremos conseguir con estas medidas es anticiparnos a los posibles problemas que ocurran y responder en el menor tiempo posible si sucede algo.
+
+En resumen, proteger las aplicaciones web es una parte muy importante porque son las que hacen de puente o punto de contacto entre el mundo exterior (clientes, usuarios...) con la empresa, por lo que cualquier vulnerabilidad podría tener graves consecuencias.
