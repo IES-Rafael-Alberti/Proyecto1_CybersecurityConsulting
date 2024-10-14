@@ -1,4 +1,4 @@
-# Proyecto1_CybersecurityConsulting# Proyecto1_CybersecurityConsulting
+# Proyecto1_CybersecurityConsulting
 ## Introducción
 La empresa TrustShield Financial nos ha contratado para la realización de un análisisde su estructura y así identificar vulnerabilidades que puedan poner en peligro la confidencialidad, integridad y disponibilidad de sus datos.
 
