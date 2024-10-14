@@ -166,7 +166,7 @@ Tiene un CVSS de 5'3.
 ### Descripción
 
 Los errores en la configuración son, a día de hoy, uno de los mayores problemas en la ciberseguridad. Se ha demostrado que el 90% de las aplicaciones tienen algún tipo de fallo de configuración, principalmente por el alto nivel de configuración de los programas actuales.
-Entre los errores mas comunes, se encuentran los siguientes:
+Entre los errores más comunes, se encuentran los siguientes:
 + Falta de un bastionado de seguridad apropiado a lo largo de la aplicación unos permisos mal configurados en la nube.
 + Funciones habilitadas o instaladas innecesarias (puertos abiertos sin utilidad, privilegios...)
 + Cuentas por defecto con sus contraseñas activas y sin cambiar.
@@ -200,16 +200,15 @@ Entre los errores mas comunes, se encuentran los siguientes:
 ## Vulnerable and Outdated Components 
 ### Descripción
 
-El problema de los compenentes vulnerables es uno de los mas dificiles de categorizar, pues no tienen CVEs asignados, teniendo por defecto una puntuacion de CWe de 5.0. 
+Esta vulnerabilidad se refiere al uso de bibliotecas, frameworks, módulos o cualquier componente de software que no está actualizado o que contiene vulnerabilidades conocidas. Esto puede ocurrir cuando los desarrolladores no actualizan los componentes a sus versiones más recientes o usan componentes que ya no  tienen soporte. Los atacantes pueden aprovechar estas debilidades para comprometer la seguridad del sistema.
 Alguno de los errores que lo componen son:
-+ No saber la versión de todos los componentes en uso. Esto incluye tambien las dependencias de los componentes.
++ No saber la versión de todos los componentes en uso. Esto incluye también las dependencias de los componentes.
 + Usar un software vulnerable, sin soporte o desactualizado. Incluyendo Sistema Operativo, servidor web, SGBD, APIs, librerias...
 + No escanear frecuentemente por vulnerabilidades y no suscribirse a boletines relacionados a los componentes que uses.
 + No asegurar las configuraciones de los componentes.
-+ Los desarrolladores de software no comprueban las compatibilidades de su software con las librerias que han sido actualizadas o parcheadas. 
++ Los desarrolladores de software no comprueban las compatibilidades de su software con las librerías que han sido actualizadas o parcheadas. 
 
 ### Identificación de CVEs
-
 
 #### CVE 2024-27395
 + Gravedad: Medio
