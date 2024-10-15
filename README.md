@@ -1,12 +1,13 @@
 
 # Proyecto1_CybersecurityConsulting
 ## Introducción
-La empresa TrustShield Financial nos ha contratado para la realización de un análisisde su estructura y así identificar vulnerabilidades que puedan poner en peligro la confidencialidad, integridad y disponibilidad de sus datos.
+La empresa TrustShield Financial nos ha contratado para la realización de un análisis de su estructura y así identificar vulnerabilidades que puedan poner en peligro la confidencialidad, integridad y disponibilidad de sus datos.
 
-Hemos decidido centrarnos en las vulnerabilidades de sus aplicaciones web ya que esta es la cara que da la empresa a internet, y por lo tanto, a gran parte de sus usuarios y a posibles atacantes.
+Nuestro equipo a tomado la decisión de centrar nuestro estudio en el análisis de las posibles vulnerabilidades de las aplicaciones web de una empresa. Esta elección se debe a que estas aplicaciones son la interfaz principal de la empresa en el entorno digital, siendo su punto de contacto con una gran parte de sus usuarios y con posibles atacantes que pudieran intentar comprometer la seguridad del sistema.
 
 Las categorías de vulnerabilidad han sido elegidas por su número de incidentes en los últimos años y como de graves serían para TrustShield Financial en caso de sufrirlas.
 ## Categorías de vulnerabilidades
+Para las categorías de vulnerabilidades de las aplicaciones web nos hemos basado principalmente en el [OWASP Top 10 de 2021](https://owasp.org/www-project-top-ten/) debido a que este proyecto de OWASP recoge las vulnerabilidades más frecuentes y/o peligrosas en relación a las aplicaciones web.
 ****
 
 ## Broken Access Control
@@ -130,14 +131,22 @@ Si no se monitoriza y registra las actividades de una aplicación web o no se ha
 
 Además, si los logs y alertas son visibles a todos y no solo a las personas responsables se puede filtrar información.
 
+**Ejemplos**
+1) Una biblioteca tiene un sistema de gestión en línea que permite a los socios de la biblioteca gestionar sus libros desde la web pero no monitoriza los intentos de acceso inusuales y cambios en los permisos de los usuarios.
+Un atacante podría acceder a la cuenta de un socio, aprovecharse de la falta de monitorización en el cambio de permiso para elevar a este usuario y usarlo para borrar multas y obtener información personal de todos los usuarios de la biblioteca.
+Debido a la falta de monitorización y registros, este atacante podría seguir actuando durante meses sin que la biblioteca se diera cuenta de que la información de sus socios está comprometida.
+
+2) Un centro de cursos en línea que ofrece planes gratuitos y de pago con clases, exámenes y la obtención de certificados pero no registra el cambio en las calificaciones de los usuarios ni monitoriza el acceso y actividad inusual de los usuarios.
+Un atacante aprovecha estas vulnerabilidades para obtener la cuenta de un usuario y acceder a su plan de pago y decide también cambiar sus calificaciones para obtener certificados sin esforzarse. Debido a la mala monitorización y falta de registro, el atacante no es detectado y obtiene una gran cantidad de certificados sin esfuerzo.
+
 ### <u>Contramedidas</u>
 
-Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy importante el solventarlas ya que facilitaría la detección y respuesta a otros ataques y el análisis forense tras sufrir un ataque. Algunas maneras para cubrir este tipo de vulnerabilidad sería:
+Aunque estas vulnerabilidades no provocarían un ataque por si sola, es muy importante el solventarlas ya que facilitaría la detección y respuesta a otros ataques y el análisis forense tras sufrir un ataque. Algunas maneras para cubrir este tipo de vulnerabilidad sería:
 
 + Todos los logins, control de accesos y fallos en la validación del input por parte del servidor se añadan a un log con información    suficiente sobre los usuarios para detectar cuentas sospechosas y mantener dichos logs el tiempo suficiente para realizar un análisis forense en caso de que ocurriera algo.
-+ Asegurarse de que los logs se generan en un formato en el que un gestor de logs pueda comprender.
-+ Asegurarse de que los datos de los logs están codificados correctamente para prevenir inyecciones o ataques a los sistemas de log o monitoreo y darnos una imagen distinta de la situación de la real.
-+ Asegurarse de que transacciones de importancia (por ejemplo agregar información a una tabla de una base de datos) tengan un seguimiento de auditoría con controles de integridad para prevenir que se manipulen o eliminen.
++ Asegurarse de que los logs se generan en un formato en el que un gestor de logs pueda comprender, facilitando así su posterior uso.
++ Asegurarse de que los datos de los logs están codificados correctamente para prevenir inyecciones o ataques a los sistemas de log o monitorización y darnos una imagen distinta de la situación de la real.
++ Asegurarse de que transacciones de importancia (por ejemplo agregar información a una tabla de una base de datos) tengan un seguimiento de auditoría con controles de integridad para prevenir que se manipulen o eliminen y, si se hiciera, saber quién es el responsable.
 + Los equipos de DevSecOps deberían de monitorizar y alertar de manera efectiva para detectar actividad sospechosa y responder rápidamente.
 + Establecer o adoptar un plan de respuesta y recuperación a incidentes.
 ****
@@ -148,23 +157,29 @@ Los problemas de SSRF ocurren cuando una aplicación web realiza una consulta HT
 
 Con las facilidades y conveniencias proporcionadas a los usuarios por las aplicaciones web actuales el número de incidencias de SSRF está en aumento.
 
-Esta vulnerabilidad sería muy grave para TrustShield Financial, ya que un atacante podría acceder o incluso manipular información confidencial simplemente cambiando una URL si tiene algo de conocimento sobre la red de la empresa.
+Esta vulnerabilidad sería muy grave para TrustShield Financial, ya que un atacante podría acceder o incluso manipular información confidencial simplemente cambiando una URL si tiene algo de conocimiento sobre la red de la empresa.
+
+**Ejemplos**
+1) Una aplicación web que permite a los usuarios crear sus propios blogs y que tiene una función para importar imágenes a partir de URLs pero no las valida antes.
+Un atacante en lugar de introducir la URL de una imagen introduce varias URLs hasta que `"http://servidor-interno/api/usuarios"` y el servidor responde a esta petición HTTP con la información de todos los usuarios registrados en la aplicación web.
+
+2) Una aplicación web que ofrece un servicio de pago de monitorización de servidores en la nube pudiendo añadir nuevos servidores a través del dominio de estos, pero no las verifica adecuadamente. 
+Un atacante consigue acceder a los datos de facturación de los clientes introduciendo `"http://servidor-interno/facturas"` en lugar del dominio de un servidor y obtiene información sensible de todos los clientes de la aplicación web.
 
 ### Identificación de CVEs
-+ ####  CVE-2021-21973 : Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
-Tiene un CVSS de 5'3.
++ ####  [CVE-2021-21973](https://www.cve.org/CVERecord?id=CVE-2021-21973)
+    + Gravedad: Medio
+    + Puntuación CVSS: 5.3 (Base Score)
+    + Descripción: Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
+    + Contramedidas: A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas.
 
 ### <u>Contramedidas</u>
-+ ####  CVE-2021-21973 
-    
-    A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas. En el caso de que no fuera así podríamos probar varias cosas desde la capa de red y desde la e aplicación:
-
     Desde la capa de red podríamos:
-    + Separar los sistemas que se encargan de las solicitudes externas del resto de la red, reduciendo el impacto de un SSRF.
+    + Segmentar el acceso remoto a recursos entre distintas redes para reducir el impacto de un posible ataque por SSRF.
     + Limitar el tráfico de nuestra intranet configurando nuestro firewall para que deniegue por defecto salvo para el tráfico esencial.
 
     Desde la capa de aplicación podríamos:
-    + Validar todo lo que introduzca un usuario, forzandolos a usar un esquema de URL, puerto y destino con una whitelist. De esta manera el ususario solo podrá acceder a las direcciones de la whitelist.
+    + Validar todo lo que introduzca un usuario, forzándolos a usar un esquema de URL, puerto y destino con una whitelist. De esta manera el ususario solo podrá acceder a las direcciones de la whitelist.
     + Deshabilitar redirecciones HTTP.
     + No devolver información sin validar al cliente.
 ****
