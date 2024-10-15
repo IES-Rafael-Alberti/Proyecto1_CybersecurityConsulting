@@ -219,21 +219,26 @@ Entre los errores más comunes, se encuentran los siguientes:
 + El servidor no envía cabeceras seguras y/o directivas, o no están establecidas con valores seguros.
 + El software esta desactualizado o es vulnerable.
 
+## Ejemplos
+El servidor de aplicaciones viene con aplicaciones de prueba que no se eliminaron del servidor de producción. Estas aplicaciones de muestra tienen fallas de seguridad conocidas que los atacantes pueden utilizar para comprometer el servidor.
+
 ### Identificación de CVEs
 
-+ ####  CVE - 2024-26092 
-    + Gravedad: Medio
-    + Puntuación CVSS: 5.4 (Base Score)
-    + Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en
++ ####  [CVE - 2024-26092](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26092)
+    + **Gravedad**: Medio
+    + **Puntuación CVSS**: 5.4 (Base Score)
+    + **Descripción**:  Adobe experience Manager versión 6.5.20 y anterior están afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en
   campos de formularios vulnerables.
 
-+ #### CVE-2024-35933
-    + Gravedad: Medio
-    + Puntuación CVSS: 5.5 (Base Score)
-    + CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
+    + **Contramedida**:La manera de solucionar este  problema es actualizar Adobe Experience Manager a la versión 6.5.21 o posterior, ya que la vulnerabilidad se corrige en esa versión.
+
++ #### [CVE-2024-35933](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-35933)
+    + **Gravedad**: Medio
+    + **Puntuación CVSS**: 5.5 (Base Score)
+    + **Descripción**: CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
+    +  **Contramedida**: Se requiere actualizar a una versión del kernel a una que incluya este parche. El kernel 6.1.90-1 o superior ya incorpora la solución a esta vulnerabilidad. 
 
 ### <u>Contramedidas</u>
-
 + Crear una plataforma con el contenido mínimo y necesario, evitando instalar características, componentes o documentación innecesaria.
 + Establecer una tarea que revise y actualice las configuraciones relacionadas con todas las notas de seguridad, actualizaciones y parches
 + Segmentar la arquitectura de la aplicación implementando contenedores o una lista de control de acceso en la nube (ACLs)
@@ -245,7 +250,7 @@ Entre los errores más comunes, se encuentran los siguientes:
 ## Vulnerable and Outdated Components 
 ### <u>Descripción</u>
 
-Esta vulnerabilidad se refiere al uso de bibliotecas, frameworks, módulos o cualquier componente de software que no está actualizado o que contiene vulnerabilidades conocidas. Esto puede ocurrir cuando los desarrolladores no actualizan los componentes a sus versiones más recientes o usan componentes que ya no  tienen soporte. Los atacantes pueden aprovechar estas debilidades para comprometer la seguridad del sistema.
+Esta vulnerabilidad se refiere al uso de bibliotecas, frameworks, módulos o cualquier componente de software que no está actualizado o que contiene vulnerabilidades conocidas. Esto puede ocurrir cuando los desarrolladores no actualizan los componentes a sus versiones más recientes o usan componentes que ya no tienen soporte. Los atacantes pueden aprovechar estas debilidades para comprometer la seguridad del sistema.
 Alguno de los errores que lo componen son:
 + No saber la versión de todos los componentes en uso. Esto incluye también las dependencias de los componentes.
 + Usar un software vulnerable, sin soporte o desactualizado. Incluyendo Sistema Operativo, servidor web, SGBD, APIs, librerias...
@@ -253,18 +258,23 @@ Alguno de los errores que lo componen son:
 + No asegurar las configuraciones de los componentes.
 + Los desarrolladores de software no comprueban las compatibilidades de su software con las librerías que han sido actualizadas o parcheadas. 
 
+### Ejemplos
+Los componentes suelen ejecutarse con los mismos privilegios que la propia aplicación, por lo que las fallas en cualquier componente pueden tener un impacto serio. Dichas fallas pueden ser accidentales (por ejemplo, un error de programación) o intencionales (por ejemplo, una back-door en un componente).
+
 ### Identificación de CVEs
 
-+ ####  CVE 2024-27395 
-    + Gravedad: Medio
-    + Puntuación CVSS: 5.5 (Base Score)
-    + CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
++ ####  [CVE 2024-25103](https://nvd.nist.gov/vuln/detail/CVE-2024-25103)
+    + **Gravedad**: Medio
+    + **Puntuación** CVSS: 5.5 (Base Score)
+    + **Descripción**:  CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
+    + **Contramedida**: La empresa encargada de AppSamvid no ha dado ninguna solución a día de hoy a 15/10/2024.
 
-+ ####  CVE-2022-24740 
-    + Gravedad: Alto
-    + Puntuación CVSS: 7.5 (Base Score)
-    + Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
-
++ ####  [CVE-2022-24740](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-24740)
+    + **Gravedad**: Alto
+    + **Puntuación CVSS**: 7.5 (Base Score)
+    + **Descripción**:  Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
+    + **Contramedida**: a solución principal es actualizar a la versión 15.0.0-alpha.0 o posterior, donde la vulnerabilidad ha sido corregida
+  
 ### <u>Contramedidas</u>
 
 + Eliminar las dependencias, funciones, archivos y documentación en desuso.
@@ -273,6 +283,7 @@ Alguno de los errores que lo componen son:
 + Obtener solo de fuentes seguras los componentes que forman nuestro sistema.
 
 ****
+
 
 ##  Insecure Design 
 ###  Descripción 
@@ -291,7 +302,7 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
     + **Contramedidas**: Tras una investigación hemos visto que no hay información relacionada con medidas para prevenir este CVE. Aunque viendo la fuente del problema habría algunas medidas interesantes.
         + Utilizar autenticación de multifactor.
         + Fortalecer los procesos de restablecimiento de contraseña.
-        + Hemos encontrado un error similar que ocurrió en CISCO, en el cuál como en la mayoría de CVE nos aconseja actualizar el software a versiones donde se hayan parcheado dichos problemas. [Referencia](https://ostec.blog/es/generico/cve-2024-20419-vulnerabilidad-critica-en-cisco-smart-software-manager/#:~:text=Mitigaci%C3%B3n%20y%20correcci%C3%B3n)
+        + Hemos encontrado un error similar que ocurrió en CISCO, en el cuál como en la mayoría de CVE nos aconseja actualizar el software a versiones donde se hayan parcheado dichos problemas.
 
 
 
@@ -300,7 +311,7 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
     + **[Puntuación CVSS](https://www.incibe.es/incibe-cert/alerta-temprana/vulnerabilidades/cve-2023-21367)**: 5.5 (Base Score)  
     + **Descripción**: En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
     + **Contramedida**:
-        + La única contramedida que nos brindan es la de actualizar al siguiente parche para solucionar las fallas del sistema. [Referencia](https://source.android.com/docs/security/bulletin/android-14?hl=es)
+        + La única contramedida que nos brindan es la de actualizar al siguiente parche para solucionar las fallas del sistema. 
 
 ###  Contramedidas 
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
@@ -338,7 +349,7 @@ Tú utilizas una aplicación y dicha actualización recibe actualizaciones de la
     + **Puntuación CVSS**: 7.8 (Base Score)  
     + **Descripción**: Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitía que una máquina invitada pudiese asignar recursos de los cuales no tenía autorización. Esto podría llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o comprometer el sistema.
     + **Contramedida**: 
-     + Como en la mayoría de CVEs las contramedidas propuestas son la actualización del software a uno más reciente y estar atentos a futuros parches. [Referencia](https://nvidia.custhelp.com/app/answers/detail/a_id/5383)
+     + Como en la mayoría de CVEs las contramedidas propuestas son la actualización del software a uno más reciente y estar atentos a futuros parches. 
 
 ###  Contramedidas 
 - Verificación del origen de los software o datos. Tendremos que comprobar que estos provienen de fuentes legítimas y no se han alterado.
