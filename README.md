@@ -25,7 +25,7 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 + Configuraciones incorrectas de CORS (uso compartido de recursos de origen cruzado) que permiten el acceso a APIs desde orígenes no autorizados o confiables.
 
-### **Contramedidas**
+###  Contramedidas 
 
 + Unas de las posibilidades que tenemos es que denegemos por defecto todo menos los recursos públicos.
 
@@ -43,7 +43,7 @@ Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
 ### Identificación de CVEs
 
-+ #### **CVE-2024-4263**
++ ####  CVE-2024-4263 
 
     Este es una de las vulnerabilidades que hemos encontrado la cuál los usuarios con pocos privilegios con solo permisos de edición (EDIT) pueden eliminar cualquier dato. Este problema está por la poca validación de las solicitudes DELEte que con tan sólo permisos EDIT puede hacer eliminaciones de datos no autorizados.
 
@@ -51,7 +51,7 @@ Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
     Según CVSS nos encontramos contra una vulnerabilidad **MEDIA** con una nota de **5.4**
 
-+ #### **CVE-2024-22234**  
++ ####  CVE-2024-22234   
     Esta vulnerabilidad trata de que cuando utilizas el método *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)* directamente se le pasa un parámetro de autenticación que sea nulo y devuelve un retorno verdadero erróneo.
 
     La forma en la que no es vulnerable si cualquiera de los siguientes es cierto:  
@@ -80,19 +80,19 @@ Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas
 
 ### Identificación de CVEs
 
-+ #### **CVE-2024-45402**
++ ####  CVE-2024-45402 
 
     Picotls es una biblioteca de protocolos TLS que permite a los usuarios seleccionar diferentes backend criptográficos en función de su uso. Cuando analizas un mensaje TLS falsificado, los picolts pueden liberar la misma memoria dos veces. Este doble liberación de memoria ocurre durante la eliminación de múltiples objetos sin ninguna llamada intermedia a malloc. Típicamente, esto desencadena la implementación de malloc para detectar el error y abortar el proceso. Pero dependiendo de las partes internas de malloc y el backend criptográfico que se este utilizando, la falla prodría conducir a un escenario de uso despues de la liberación lo que permitiría la ejecución arbitaria de codigo.
 
     Según CVSS estamos ante una vulnerabilidad de gravedad **ALTA** con una puntuación de **8.6**
 
-+ #### **CVE-2024-6189**
++ ####  CVE-2024-6189 
 
     Esta vulnerabilidad afecta a la función *fromSetWirelessRepeat* del archivo */goform/WifiExtraSet*. La manipulación del argumento wpapsk_crypto conduce a un desbordamiento de búfer basado en pila. Es posible lanzar el ataque de forma remota.
 
     Esta vulnerabiliddad desde la versión 2.0 siguiendo la versión 3.0, 3.1, 4.0 son todas vulnerabilidades de gravedad **ALTA** con estas respectivas notas **9.0, 8.8, 8.8, 8.7**
 
-### **Contramedidas**
+###  Contramedidas 
 
 Estas son algunas de las cosas que tenemos que verificar para saber como prevenir estos ataques.
 
@@ -140,7 +140,8 @@ Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy impor
 + Asegurarse de que transacciones de importancia (por ejemplo agregar información a una tabla de una base de datos) tengan un seguimiento de auditoría con controles de integridad para prevenir que se manipulen o eliminen.
 + Los equipos de DevSecOps deberían de monitorizar y alertar de manera efectiva para detectar actividad sospechosa y responder rápidamente.
 + Establecer o adoptar un plan de respuesta y recuperación a incidentes.
-
+****
+ 
 ## Server-side request forgery (SSRF)
 ### <u>Descripción</u>
 Los problemas de SSRF ocurren cuando una aplicación web realiza una consulta HTTP sin validar la URL suministrada por el usuario. Esto permite a un atacante forzar a la aplicación web a enviar una solicitud a la estructura interna de la red donde se aloja, incluso estando protegido por un firewall, VPN u otro tipo de lista de control de acceso a la red (ACL) y así obtener información, escalar privilegios o ejecutar código remotamente en un servidor.
@@ -150,11 +151,11 @@ Con las facilidades y conveniencias proporcionadas a los usuarios por las aplica
 Esta vulnerabilidad sería muy grave para TrustShield Financial, ya que un atacante podría acceder o incluso manipular información confidencial simplemente cambiando una URL si tiene algo de conocimento sobre la red de la empresa.
 
 ### Identificación de CVEs
-+ #### **CVE-2021-21973**: Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
++ ####  CVE-2021-21973 : Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
 Tiene un CVSS de 5'3.
 
 ### <u>Contramedidas</u>
-+ #### **CVE-2021-21973**
++ ####  CVE-2021-21973 
     
     A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas. En el caso de que no fuera así podríamos probar varias cosas desde la capa de red y desde la e aplicación:
 
@@ -166,7 +167,6 @@ Tiene un CVSS de 5'3.
     + Validar todo lo que introduzca un usuario, forzandolos a usar un esquema de URL, puerto y destino con una whitelist. De esta manera el ususario solo podrá acceder a las direcciones de la whitelist.
     + Deshabilitar redirecciones HTTP.
     + No devolver información sin validar al cliente.
-
 ****
 
 ## Security Misconfiguration
@@ -185,15 +185,16 @@ Entre los errores más comunes, se encuentran los siguientes:
 
 ### Identificación de CVEs
 
-#### **CVE - 2024-26092**
-+ Gravedad: Medio
-+ Puntuación CVSS: 5.4 (Base Score)
-+ Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en campos de formularios vulnerables.
++ ####  CVE - 2024-26092 
+    + Gravedad: Medio
+    + Puntuación CVSS: 5.4 (Base Score)
+    + Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en
+  campos de formularios vulnerables.
 
-#### CVE-2024-35933
-+ Gravedad: Medio
-+ Puntuación CVSS: 5.5 (Base Score)
-+ CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
++ #### CVE-2024-35933
+    + Gravedad: Medio
+    + Puntuación CVSS: 5.5 (Base Score)
+    + CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
 
 ### <u>Contramedidas</u>
 
@@ -218,15 +219,15 @@ Alguno de los errores que lo componen son:
 
 ### Identificación de CVEs
 
-#### **CVE 2024-27395**
-+ Gravedad: Medio
-+ Puntuación CVSS: 5.5 (Base Score)
-+ CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
++ ####  CVE 2024-27395 
+    + Gravedad: Medio
+    + Puntuación CVSS: 5.5 (Base Score)
+    + CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
 
-#### **CVE-2022-24740**
-+ Gravedad: Alto
-+ Puntuación CVSS: 7.5 (Base Score)
-+ Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
++ ####  CVE-2022-24740 
+    + Gravedad: Alto
+    + Puntuación CVSS: 7.5 (Base Score)
+    + Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
 
 ### <u>Contramedidas</u>
 
@@ -237,8 +238,8 @@ Alguno de los errores que lo componen son:
 
 ****
 
-## **Insecure Design**
-### **Descripción**
+##  Insecure Design 
+###  Descripción 
 El **diseño inseguro** se refiere a una falla en la etapa de diseño o implementación de un sistema o software, en la que no se pensaron o incluyeron controles de seguridad necesarios para defenderse de posibles ataques.
 Esto se suele confundir mucho con una implementación insegura, aunque no se refieren a la misma definición.
 
@@ -246,17 +247,17 @@ Un ejemplo contidiano podriía ser el siguiente: una constructora realiza los pl
 Si por el contrario, en la planificación se han planificado estas medidas de seguridad y en su posterior planificación no se han puesto las cerraduras eso se identificaría con una implementación insegura.  
 
 ### Identificación de CVEs
-#### **CVE-2022-44004**      	
++ ####  CVE-2022-44004       	
 Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña.  
 
 Es clasificada con una puntuación de 9.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
-#### CVE-2023-21367	
++ #### CVE-2023-21367	
 En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
 
 Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel de seguridad MEDIA.
 
-### **Contramedidas**
+###  Contramedidas 
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
 
 - Establecer y utilizar un catálogo de patrones de diseño seguros ("camino pavimnetado"), para que los equipos los utilicen en sus desarrollos sin tener que reinventar medidas de seguridad desde cero.
@@ -279,7 +280,7 @@ Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel 
 
 ### Software and Data Integrity Failures
 
-### **Descripción**
+###  Descripción 
 
 Los fallos de integridad en software y datos ocurren el código o la infraestructura no están correctamente protegidos contra modificaciones no autorizadas. Estan pueden provenir deaplicaciones que dependan de repositorios, plugins, bibliotecas... También puede suceder cuando una aplicación distribuye actualizaciones de software sin una previa verificación de las mismas, lo que puede facilitar a los atacantes dristribuir versiones maliciosas. 
 
@@ -290,7 +291,7 @@ Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del
 
 Es clasificada con una puntuación de 7.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
-### **Contramedidas**
+###  Contramedidas 
 - Verificación del origen de los software o datos. Tendremos que comprobar que estos provienen de fuentes legitimas y no se han alterado.
 
 - Tendremos que asegurarnos que las bibliotecas y dependencias que utilizamos provienen de repositorios confiables. Comentar que para cargos de alto riesgo es mejor utilizarlos en repositorios locales previamente analizados.
