@@ -173,15 +173,15 @@ Un atacante consigue acceder a los datos de facturación de los clientes introdu
     + Descripción: Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
     + Contramedidas: A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas.
 
-### <u>Contramedidas</u>
-    Desde la capa de red podríamos:
-    + Segmentar el acceso remoto a recursos entre distintas redes para reducir el impacto de un posible ataque por SSRF.
-    + Limitar el tráfico de nuestra intranet configurando nuestro firewall para que deniegue por defecto salvo para el tráfico esencial.
+### Contramedidas
+Desde la capa de red podríamos:
++ Segmentar el acceso remoto a recursos entre distintas redes para reducir el impacto de un posible ataque por SSRF.
++ Limitar el tráfico de nuestra intranet configurando nuestro firewall para que deniegue por defecto salvo para el tráfico esencial.
 
-    Desde la capa de aplicación podríamos:
-    + Validar todo lo que introduzca un usuario, forzándolos a usar un esquema de URL, puerto y destino con una whitelist. De esta manera el ususario solo podrá acceder a las direcciones de la whitelist.
-    + Deshabilitar redirecciones HTTP.
-    + No devolver información sin validar al cliente.
+Desde la capa de aplicación podríamos:
++ Validar todo lo que introduzca un usuario, forzándolos a usar un esquema de URL, puerto y destino con una whitelist. De esta manera el ususario solo podrá acceder a las direcciones de la whitelist.
++ Deshabilitar redirecciones HTTP.
++ No devolver información sin validar al cliente.
 ****
 
 ## Security Misconfiguration
