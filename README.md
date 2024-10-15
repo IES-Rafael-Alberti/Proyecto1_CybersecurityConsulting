@@ -24,7 +24,7 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 + Configuraciones incorrectas de CORS (uso compartido de recursos de origen cruzado) que permiten el acceso a APIs desde orígenes no autorizados o confiables.
 
-**Contramedidas**
+#### **Contramedidas**
 
 + Unas de las posibilidades que tenemos es que denegemos por defecto todo menos los recursos públicos.
 
@@ -40,7 +40,7 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
-## Identificación de CVEs
+#### Identificación de CVEs
 
 + **CVE-2024-4263**
 
@@ -78,7 +78,7 @@ Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas
 + ¿Se utilizan funciones hash en obsoletas, como MD5 o SHA1, o se utilizan funciones hash no criptográficas cuando se necesitan funciones hash criptográficas?
 
 
-**Contramedidas**
+#### **Contramedidas**
 
 Estas son algunas de las cosas que tenemos que verificar para saber como prevenir estos ataques.
 
@@ -102,7 +102,7 @@ Estas son algunas de las cosas que tenemos que verificar para saber como preveni
 
 Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
-## Identificación de CVEs
+#### Identificación de CVEs
 
 + **CVE-2024-45402**
 
@@ -128,6 +128,8 @@ Si no se monitoriza y registra las actividades de una aplicación web o no se ha
 
 Además, si los logs y alertas son visibles a todos y no solo a las personas responsables se puede filtrar información.
 
+#### Contramedidas
+
 Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy importante el solventarlas ya que facilitaría la detección y respuesta a otros ataques y el análisis forense tras sufrir un ataque. Algunas maneras para cubrir este tipo de vulnerabilidad sería:
 
 + Todos los logins, control de accesos y fallos en la validación del input por parte del servidor se añadan a un log con información    suficiente sobre los usuarios para detectar cuentas sospechosas y mantener dichos logs el tiempo suficiente para realizar un análisis forense en caso de que ocurriera algo.
@@ -145,11 +147,11 @@ Con las facilidades y conveniencias proporcionadas a los usuarios por las aplica
 
 Esta vulnerabilidad sería muy grave para TrustShield Financial, ya que un atacante podría acceder o incluso manipular información confidencial simplemente cambiando una URL si tiene algo de conocimento sobre la red de la empresa.
 
-## Identificación de CVEs
+#### Identificación de CVEs
 + **CVE-2021-21973**: Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
 Tiene un CVSS de 5'3.
 
-## Contramedidas propuestas
+#### Contramedidas propuestas
 + **CVE-2021-21973**
     
     A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas. En el caso de que no fuera así podríamos probar varias cosas desde la capa de red y desde la e aplicación:
@@ -162,8 +164,10 @@ Tiene un CVSS de 5'3.
     + Validar todo lo que introduzca un usuario, forzandolos a usar un esquema de URL, puerto y destino con una whitelist. De esta manera el ususario solo podrá acceder a las direcciones de la whitelist.
     + Deshabilitar redirecciones HTTP.
     + No devolver información sin validar al cliente.
-## Security Misconfiguration
-### Descripción
+
+
+### Security Misconfiguration
+#### Descripción
 
 Los errores en la configuración son, a día de hoy, uno de los mayores problemas en la ciberseguridad. Se ha demostrado que el 90% de las aplicaciones tienen algún tipo de fallo de configuración, principalmente por el alto nivel de configuración de los programas actuales.
 Entre los errores más comunes, se encuentran los siguientes:
@@ -176,19 +180,19 @@ Entre los errores más comunes, se encuentran los siguientes:
 + El servidor no envía cabeceras seguras y/o directivas, o no están establecidas con valores seguros.
 + El software esta desactualizado o es vulnerable.
 
-### Identificación de CVEs
+#### Identificación de CVEs
 
-#### CVE - 2024-26092
+##### CVE - 2024-26092
 + Gravedad: Medio
 + Puntuación CVSS: 5.4 (Base Score)
 + Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en campos de formularios vulnerables.
 
-#### CVE-2024-35933
+##### CVE-2024-35933
 + Gravedad: Medio
 + Puntuación CVSS: 5.5 (Base Score)
 + CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
 
-### Contramedidas
+#### Contramedidas
 
 + Implementar un proceso de bastionado repetible?
 + Crear una plataforma con el contenido mínimo y necesario, evitando instalar características, componentes o documentación innecesaria.
@@ -197,8 +201,8 @@ Entre los errores más comunes, se encuentran los siguientes:
 + Enviar directivas de seguridad a los clientes.
 + Establecer un proceso que verifique la efectividad de la configuración de todos los entornos.
 
-## Vulnerable and Outdated Components 
-### Descripción
+### Vulnerable and Outdated Components 
+#### Descripción
 
 Esta vulnerabilidad se refiere al uso de bibliotecas, frameworks, módulos o cualquier componente de software que no está actualizado o que contiene vulnerabilidades conocidas. Esto puede ocurrir cuando los desarrolladores no actualizan los componentes a sus versiones más recientes o usan componentes que ya no  tienen soporte. Los atacantes pueden aprovechar estas debilidades para comprometer la seguridad del sistema.
 Alguno de los errores que lo componen son:
@@ -208,19 +212,19 @@ Alguno de los errores que lo componen son:
 + No asegurar las configuraciones de los componentes.
 + Los desarrolladores de software no comprueban las compatibilidades de su software con las librerías que han sido actualizadas o parcheadas. 
 
-### Identificación de CVEs
+#### Identificación de CVEs
 
-#### CVE 2024-27395
+##### CVE 2024-27395
 + Gravedad: Medio
 + Puntuación CVSS: 5.5 (Base Score)
 + CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
 
-#### CVE-2022-24740
+##### CVE-2022-24740
 + Gravedad: Alto
 + Puntuación CVSS: 7.5 (Base Score)
 + Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
 
-### Contramedidas
+#### Contramedidas
 
 + Eliminar las dependencias, funciones, archivos y documentación en desuso.
 + Comprobar continuamente las versiones de los componentes y sus dependencias en busca de partes desactualizadas.
@@ -228,26 +232,26 @@ Alguno de los errores que lo componen son:
 + Obtener solo de fuentes seguras los componentes que forman nuestro sistema.
 
 
-## **Insecure Design**
-### **Descripción**
+### **Insecure Design**
+#### **Descripción**
 El **diseño inseguro** se refiere a una falla en la etapa de diseño o implementación de un sistema o software, en la que no se pensaron o incluyeron controles de seguridad necesarios para defenderse de posibles ataques.
 Esto se suele confundir mucho con una implementación insegura, aunque no se refieren a la misma definición.
 
 Un ejemplo contidiano podriía ser el siguiente: una constructora realiza los planos de una casa, estructuración de cuartos, ventanas, puertas, etc. Si en la planificación, no preves el uso de puertas o ventanas con cerraduras, esto crea una vulnerabilidad que por muy bien que se construya posteriormente la casa siguiente cada paso de los planos, ladrones podrían entrar en ella debido a la falta de seguridad en la planificación. A esto se refiere con un diseño inseguro.  
 Si por el contrario, en la planificación se han planificado estas medidas de seguridad y en su posterior planificación no se han puesto las cerraduras eso se identificaría con una implementación insegura.  
 
-### **CVE**
-#### **CVE-2022-44004**      	
+#### **CVE**
+##### **CVE-2022-44004**      	
 Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña.  
 
 Es clasificada con una puntuación de 9.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
-#### CVE-2023-21367	
+##### CVE-2023-21367	
 En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
 
 Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel de seguridad MEDIA.
 
-### **Contramedidas**
+#### **Contramedidas**
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
 
 - Establecer y utilizar un catálogo de patrones de diseño seguros ("camino pavimnetado"), para que los equipos los utilicen en sus desarrollos sin tener que reinventar medidas de seguridad desde cero.
@@ -267,20 +271,20 @@ Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel 
 - Limitar el consumo de recursos por usuario o servicio.      
 <br>
 
-## Software and Data Integrity Failures
+### Software and Data Integrity Failures
 
-### **Descripción**
+#### **Descripción**
 
 Los fallos de integridad en software y datos ocurren el código o la infraestructura no están correctamente protegidos contra modificaciones no autorizadas. Estan pueden provenir deaplicaciones que dependan de repositorios, plugins, bibliotecas... También puede suceder cuando una aplicación distribuye actualizaciones de software sin una previa verificación de las mismas, lo que puede facilitar a los atacantes dristribuir versiones maliciosas. 
 
-### **CVE**
-#### **CVE-2022-31609**
+#### **CVE**
+##### **CVE-2022-31609**
 
 Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitia que una máquina invitada pudiese asignar recursos de los cuales no tenia autorización. Esto podía llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o compremeter el sistema. 
 
 Es clasificada con una puntuación de 7.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
-### **Contramedidas**
+#### **Contramedidas**
 - Verificación del origen de los software o datos. Tendremos que comprobar que estos provienen de fuentes legitimas y no se han alterado.
 
 - Tendremos que asegurarnos que las bibliotecas y dependencias que utilizamos provienen de repositorios confiables. Comentar que para cargos de alto riesgo es mejor utilizarlos en repositorios locales previamente analizados.
