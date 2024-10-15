@@ -276,7 +276,7 @@ Alguno de los errores que lo componen son:
 
 ##  Insecure Design 
 ###  Descripción 
-El **diseño inseguro** se refiere a una falla en la etapa de diseño o implementación de un sistema o software, en la que no se pensaron o incluyeron controles de seguridad necesarios para defenderse de posibles ataques.
+El **diseño inseguro** se refiere a una falla en la etapa de diseño de un sistema o software, en la que no se pensaron o incluyeron controles de seguridad necesarios para defenderse de posibles ataques.
 Esto se suele confundir mucho con una implementación insegura, aunque no se refieren a la misma definición.
 
 **Ejemplo**:  
