@@ -11,7 +11,7 @@ Las categorías de vulnerabilidad han sido elegidas por su número de incidentes
 
 ## Broken Access Control
 ### <u>Descripción</u>
-Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que se le había dado al usuario. Esto puede producir que el ciberdelincuente pueda compartir informacion la cual no está autorizado, modificar dato o incluso la destruccion de los mismos. Algunas de las vulnerabilidades más comunes de este tipo son:
+Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que se le había dado al usuario. Esto puede producir que el ciberdelincuente pueda compartir información la cual no está autorizada, modificar datos o incluso la destrucción de los mismos. Algunas de las vulnerabilidades más comunes de este tipo son:
 
 + Permitir ver o editar la cuenta de otra persona.
 
@@ -39,17 +39,17 @@ https://example.com/app/accountInfo?acct=notmyacct
 
 ### <u>Contramedidas</u>
 
-+ Unas de las posibilidades que tenemos es que denegemos por defecto todo menos los recursos públicos.
++ Unas de las posibilidades que tenemos es que denegamos por defecto todo menos los recursos públicos.
 
 + Otras de las medidas es registrar las fallas de control de acceso y alertar a los administradores cuando por ejemplo estas fallas sean repetidas.
 
-+ También podriamos limitar la tasas de acceso permitidos a las APIs y controladores de forma que podamos minimizar los daños.
++ También podríamos limitar la tasas de acceso permitidos a las APIs y controladores de forma que podamos minimizar los daños.
 
 + Deshabilite el listado de directorios del servidor web y asegúrese de que los archivos de metadatos (por ejemplo una carpeta .git) y archivos de respaldo no puedan ser accedidos a partir de la raíz del sitio web.
 
-+ Implemente mecanismos de control de acceso una única vez y reutilícelos en toda la aplicación, incluyendo la minimización del uso de CORS.
++ Implemente mecanismos de control de acceso una única vez y reutilizar en toda la aplicación, incluyendo la minimización del uso de CORS.
 
-+ El control de acceso debe implementar su cumplimiento a nivel de dato y no permitir que el usuario pueda crear, leer, actulizar o borrar cualquier dato.
++ El control de acceso debe implementar su cumplimiento a nivel de dato y no permitir que el usuario pueda crear, leer, actualizar o borrar cualquier dato.
 
 
 
@@ -57,8 +57,8 @@ https://example.com/app/accountInfo?acct=notmyacct
 
 + ####  CVE-2024-4263 
     + **Gravedad:** Media.
-    + **Puntiación CVSS:** 5.4 (Base Score).
-    + **Descripción:** Este es una de las vulnerabilidades que hemos encontrado la cuál los usuarios con pocos privilegios con solo permisos de edición (EDIT) pueden eliminar cualquier dato. Este problema está por la poca validación de las solicitudes DELEte que con tan sólo permisos EDIT puede hacer eliminaciones de datos no autorizados. Aunque en la documentación oficial sólo pone que los usuarios con permiso EDIT **solo** pueden leer y actualizar datos, **NO** eliminarlos.
+    + **Puntuación CVSS:** 5.4 (Base Score).
+    + **Descripción:** Este es una de las vulnerabilidades que hemos encontrado, la cuál los usuarios con pocos privilegios con solo permisos de edición (EDIT) pueden eliminar cualquier dato. Este problema está por la poca validación de las solicitudes DELEte que con tan sólo permisos EDIT puede hacer eliminaciones de datos no autorizados. Aunque en la documentación oficial sólo pone que los usuarios con permiso EDIT **solo** pueden leer y actualizar datos, **NO** eliminarlos.
 
     + **Contramedidas**:
         + Actualizar a la versión 2.10.1 o superior de MLflow, ya que esta versión corrige el fallo de control de acceso.
@@ -84,26 +84,26 @@ https://example.com/app/accountInfo?acct=notmyacct
 
 ### <u>Descripción</u>
 
-Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas, números de tarjetas de créditos, registros médicos, información personal, etc. Ya que estas series de datos deben tener una protección adiccional, principalmente si están sujeto a  leyes de privacidad como pueden ser (Reglamento General de Protección de Datos de la UE) o regulaciones como (protección de datos financieros como el Estándar de Seguridad de Datos de PCI -PCI DSS-). Algunas de las preguntas que nos tenemos que hacer para estos datos son:
+Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas, números de tarjetas de créditos, registros médicos, información personal, etc. Ya que estas series de datos deben tener una protección adicional, principalmente si están sujeto a  leyes de privacidad como pueden ser (Reglamento General de Protección de Datos de la UE) o regulaciones como (protección de datos financieros como el Estándar de Seguridad de Datos de PCI -PCI DSS-). Algunas de las preguntas que nos tenemos que hacer para estos datos son:
 
 + ¿Se utilizan algoritmos o protocolos criptográficos antiguos o débiles de forma predeterminada o en código antiguo?
-+ ¿Se utilizan claves criptográficas predeterminadas, se generan o reutilizan claves criptográficas débiles, o es inexistente la gestión o rotación de claves adecuadas?
++ ¿Se utilizan claves criptográficas predeterminadas, se generan o reutilizar claves criptográficas débiles, o es inexistente la gestión o rotación de claves adecuadas?
 + ¿Se incluyen las claves criptográficas en los repositorios de código fuente?
 + ¿No es forzado el cifrado, por ejemplo, faltan las directivas de seguridad de los encabezados HTTP (navegador) o los encabezados?
 + ¿El certificado de servidor recibido y la cadena de confianza se encuentran debidamente validados?
 + ¿Las contraseñas se utilizan como claves criptográficas en ausencia de una función de derivación de claves a partir de contraseñas?
-+ ¿Se utilizan funciones hash en obsoletas, como MD5 o SHA1, o se utilizan funciones hash no criptográficas cuando se necesitan funciones hash criptográficas?
++ ¿Se utilizan funciones hash obsoletas, como MD5 o SHA1, o se utilizan funciones hash no criptográficas cuando se necesitan funciones hash criptográficas?
 
 **Ejemplo**
 
 Una aplicación cifra los números de tarjetas de crédito en una base de datos mediante el cifrado automático de la base de datos. Sin embargo, estos datos se descifran automáticamente cuando se recuperan, lo que permite que por una falla de inyección SQL se recuperen números de tarjetas de crédito en texto sin cifrar.
 ### <u>Contramedidas</u>
 
-Estas son algunas de las cosas que tenemos que verificar para saber como prevenir estos ataques.
+Estas son algunas de las cosas que tenemos que verificar para saber cómo prevenir estos ataques.
 
 + Clasifique los datos procesados, almacenados o transmitidos por una aplicación. Identifique qué datos son confidenciales de acuerdo con las leyes de privacidad, los requisitos reglamentarios o las necesidades comerciales.
 
-+ No almacene datos sensibles innecesariamente. Descártelos lo antes posible o utilice una utilización de tokens compatible con PCI DSS o incluso el truncamiento. Los datos que no se conservan no se pueden robar.
++ No almacene datos sensibles innecesariamente. Descartar lo antes posible o utilizar una utilización de tokens compatible con PCI DSS o incluso el truncamiento. Los datos que no se conservan no se pueden robar.
 
 + Asegúrese de cifrar todos los datos sensibles en reposo (almacenamiento).
 
@@ -125,16 +125,17 @@ Estas son algunas de las cosas que tenemos que verificar para saber como preveni
 + ####  CVE-2024-45402
     + **Gravedad:** Alta.
     + **Puntuación CVSS:** 8.6 (Base Score)
-    + **Descripción:** Picotls es una biblioteca de protocolos TLS que permite a los usuarios seleccionar diferentes backend criptográficos en función de su uso. Cuando analizas un mensaje TLS falsificado, los picolts pueden liberar la misma memoria dos veces. Este doble liberación de memoria ocurre durante la eliminación de múltiples objetos sin ninguna llamada intermedia a malloc. Típicamente, esto desencadena la implementación de malloc para detectar el error y abortar el proceso. Pero dependiendo de las partes internas de malloc y el backend criptográfico que se este utilizando, la falla prodría conducir a un escenario de uso despues de la liberación lo que permitiría la ejecución arbitaria de codigo.
+    + **Descripción:** Picotls es una biblioteca de protocolos TLS que permite a los usuarios seleccionar diferentes backend criptográficos en función de su uso. Cuando analizas un mensaje TLS falsificado, los picolts pueden liberar la misma memoria dos veces. Este doble liberación de memoria ocurre durante la eliminación de múltiples objetos sin ninguna llamada intermedia a malloc. Típicamente, esto desencadena la implementación de malloc para detectar el error y abortar el proceso. Pero dependiendo de las partes internas de malloc y el backend criptográfico que se esté utilizando, la falla podría conducir a un escenario de uso después de la liberación lo que permitiría la ejecución arbitraria del código.
     + **Contramedidas:** 
         + Actualizar Picotls.
    
 + ####  CVE-2024-6189
     + **Gravedad:** Alta
-    + **Puntiación CVSS:** 9.0-8.7(Score Base) dependiendo de la versión tiene una nota puntuación distinta
+    + **Puntuación CVSS:** 9.0-8.7(Score Base) dependiendo de la versión tiene una nota puntuación distinta
     + **Descripción:** Esta vulnerabilidad afecta a la función *fromSetWirelessRepeat* del archivo */goform/WifiExtraSet*. La manipulación del argumento wpapsk_crypto conduce a un desbordamiento de búfer basado en pila. Es posible lanzar el ataque de forma remota.
     + **Contramedidas:**
         + Actualizar Open SSH 9.8p1 o superior.
+
 
 ****
 
