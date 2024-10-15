@@ -9,7 +9,7 @@ Las categorías de vulnerabilidad han sido elegidas por su número de incidentes
 ## Categorías de vulnerabilidades
 
 ### Broken Access Control
-#### Descripción
+#### <u>Descripción</u>
 Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que se le había dado al usuario. Esto puede producir que el ciberdelincuente pueda compartir informacion la cual no está autorizado, modificar dato o incluso la destruccion de los mismos. Algunas de las vulnerabilidades más comunes de este tipo son:
 
 + Permitir ver o editar la cuenta de otra persona.
@@ -65,7 +65,7 @@ Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
 ### Cryptographic Failures
 
-#### Descripción
+#### <u>Descripción</u>
 
 Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas, números dde tarjetas de crédditom registros médicos, información personal, etc. Ya que estas series de datos deben tener una protección adiccional, principalmente si están sujeto a  leyes de privacidad como pueden ser (Reglamento General de Protección de Datos de la UE) o regulaciones como (protección de datos financieros como el Estándar de Seguridad de Datos de PCI -PCI DSS-). Algunas de las preguntas que nos tenemos que hacer para estos datos son:
 
@@ -117,7 +117,7 @@ Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
     Esta vulnerabiliddad desde la versión 2.0 siguiendo la versión 3.0, 3.1, 4.0 son todas vulnerabilidades de gravedad **ALTA** con estas respectivas notas **9.0, 8.8, 8.8, 8.7**
 
 ### Security logging and monitoring failures
-#### Descripción
+#### <u>Descripción</u>
 Si no se monitoriza y registra las actividades de una aplicación web o no se hace de manera correcta y efectiva, no seremos capaces de detectar, escalar y responder a ataques. Esto puede ocurrir debido a que:
 + Los eventos con autor, como los logins (ya sean exitosos o no) y transacciones de importancia (borrado de datos, creación...), no quedan registrados.
 + Los avisos y errores no generan mensajes de log o no se ven con claridad.
@@ -128,7 +128,7 @@ Si no se monitoriza y registra las actividades de una aplicación web o no se ha
 
 Además, si los logs y alertas son visibles a todos y no solo a las personas responsables se puede filtrar información.
 
-#### Contramedidas
+#### <u>Contramedidas</u>
 
 Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy importante el solventarlas ya que facilitaría la detección y respuesta a otros ataques y el análisis forense tras sufrir un ataque. Algunas maneras para cubrir este tipo de vulnerabilidad sería:
 
@@ -140,7 +140,7 @@ Aunque estas vulnerabilidades no provocarian un ataque por si sola, es muy impor
 + Establecer o adoptar un plan de respuesta y recuperación a incidentes.
 
 ### Server-side request forgery (SSRF)
-#### Descripción
+#### <u>Descripción</u>
 Los problemas de SSRF ocurren cuando una aplicación web realiza una consulta HTTP sin validar la URL suministrada por el usuario. Esto permite a un atacante forzar a la aplicación web a enviar una solicitud a la estructura interna de la red donde se aloja, incluso estando protegido por un firewall, VPN u otro tipo de lista de control de acceso a la red (ACL) y así obtener información, escalar privilegios o ejecutar código remotamente en un servidor.
 
 Con las facilidades y conveniencias proporcionadas a los usuarios por las aplicaciones web actuales el número de incidencias de SSRF está en aumento.
@@ -151,7 +151,7 @@ Esta vulnerabilidad sería muy grave para TrustShield Financial, ya que un ataca
 + **CVE-2021-21973**: Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
 Tiene un CVSS de 5'3.
 
-#### Contramedidas propuestas
+#### <u>Contramedidas</u> propuestas
 + **CVE-2021-21973**
     
     A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas. En el caso de que no fuera así podríamos probar varias cosas desde la capa de red y desde la e aplicación:
@@ -167,7 +167,7 @@ Tiene un CVSS de 5'3.
 
 
 ### Security Misconfiguration
-#### Descripción
+#### <u>Descripción</u>
 
 Los errores en la configuración son, a día de hoy, uno de los mayores problemas en la ciberseguridad. Se ha demostrado que el 90% de las aplicaciones tienen algún tipo de fallo de configuración, principalmente por el alto nivel de configuración de los programas actuales.
 Entre los errores más comunes, se encuentran los siguientes:
@@ -182,19 +182,18 @@ Entre los errores más comunes, se encuentran los siguientes:
 
 #### Identificación de CVEs
 
-##### CVE - 2024-26092
+##### Identificación de CVEs - 2024-26092
 + Gravedad: Medio
 + Puntuación CVSS: 5.4 (Base Score)
 + Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en campos de formularios vulnerables.
 
-##### CVE-2024-35933
+##### Identificación de CVEs-2024-35933
 + Gravedad: Medio
 + Puntuación CVSS: 5.5 (Base Score)
 + CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
 
-#### Contramedidas
+#### <u>Contramedidas</u>
 
-+ Implementar un proceso de bastionado repetible?
 + Crear una plataforma con el contenido mínimo y necesario, evitando instalar características, componentes o documentación innecesaria.
 + Establecer una tarea que revise y actualice las configuraciones relacionadas con todas las notas de seguridad, actualizaciones y parches
 + Segmentar la arquitectura de la aplicación implementando contenedores o una lista de control de acceso en la nube (ACLs)
@@ -202,7 +201,7 @@ Entre los errores más comunes, se encuentran los siguientes:
 + Establecer un proceso que verifique la efectividad de la configuración de todos los entornos.
 
 ### Vulnerable and Outdated Components 
-#### Descripción
+#### <u>Descripción</u>
 
 Esta vulnerabilidad se refiere al uso de bibliotecas, frameworks, módulos o cualquier componente de software que no está actualizado o que contiene vulnerabilidades conocidas. Esto puede ocurrir cuando los desarrolladores no actualizan los componentes a sus versiones más recientes o usan componentes que ya no  tienen soporte. Los atacantes pueden aprovechar estas debilidades para comprometer la seguridad del sistema.
 Alguno de los errores que lo componen son:
@@ -214,17 +213,17 @@ Alguno de los errores que lo componen son:
 
 #### Identificación de CVEs
 
-##### CVE 2024-27395
+##### Identificación de CVEs 2024-27395
 + Gravedad: Medio
 + Puntuación CVSS: 5.5 (Base Score)
 + CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
 
-##### CVE-2022-24740
+##### Identificación de CVEs-2022-24740
 + Gravedad: Alto
 + Puntuación CVSS: 7.5 (Base Score)
 + Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
 
-#### Contramedidas
+#### <u>Contramedidas</u>
 
 + Eliminar las dependencias, funciones, archivos y documentación en desuso.
 + Comprobar continuamente las versiones de los componentes y sus dependencias en busca de partes desactualizadas.
@@ -246,7 +245,7 @@ Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño 
 
 Es clasificada con una puntuación de 9.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
-##### CVE-2023-21367	
+##### Identificación de CVEs-2023-21367	
 En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
 
 Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel de seguridad MEDIA.
