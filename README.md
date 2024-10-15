@@ -50,7 +50,7 @@ Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
     Según CVSS nos encontramos contra una vulnerabilidad **MEDIA** con una nota de **5.4**
 
-+ **CVE-2024-22234**
++ **CVE-2024-22234**  
     Esta vulnerabilidad trata de que cuando utilizas el método *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)* directamente se le pasa un parámetro de autenticación que sea nulo y devuelve un retorno verdadero erróneo.
 
     La forma en la que no es vulnerable si cualquiera de los siguientes es cierto:  
