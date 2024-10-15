@@ -25,7 +25,19 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 + Configuraciones incorrectas de CORS (uso compartido de recursos de origen cruzado) que permiten el acceso a APIs desde orígenes no autorizados o confiables.
 
-###  Contramedidas 
+**Ejemplo:**  
+La aplicación utiliza datos no verificados en una llamada SQL que accede a información de una cuenta:
+```
+ pstmt.setString(1, request.getParameter("acct"));
+ ResultSet results = pstmt.executeQuery( );
+```
+Un atacante simplemente modifica el parámetro 'acct' en el navegador para enviar el número de cuenta que desee. Si no es verificado correctamente, el atacante puede acceder a la cuenta de cualquier usuario.
+```
+https://example.com/app/accountInfo?acct=notmyacct
+```
+
+
+### <u>Contramedidas</u>
 
 + Unas de las posibilidades que tenemos es que denegemos por defecto todo menos los recursos públicos.
 
@@ -39,7 +51,7 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 + El control de acceso debe implementar su cumplimiento a nivel de dato y no permitir que el usuario pueda crear, leer, actulizar o borrar cualquier dato.
 
-Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
+
 
 ### Identificación de CVEs
 
@@ -82,7 +94,10 @@ Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas
 + ¿Las contraseñas se utilizan como claves criptográficas en ausencia de una función de derivación de claves a partir de contraseñas?
 + ¿Se utilizan funciones hash en obsoletas, como MD5 o SHA1, o se utilizan funciones hash no criptográficas cuando se necesitan funciones hash criptográficas?
 
-###  Contramedidas 
+**Ejemplo**
+
+Una aplicación cifra los números de tarjetas de crédito en una base de datos mediante el cifrado automático de la base de datos. Sin embargo, estos datos se descifran automáticamente cuando se recuperan, lo que permite que por una falla de inyección SQL se recuperen números de tarjetas de crédito en texto sin cifrar.
+### <u>Contramedidas</u>
 
 Estas son algunas de las cosas que tenemos que verificar para saber como prevenir estos ataques.
 
@@ -119,7 +134,7 @@ Estas son algunas de las cosas que tenemos que verificar para saber como preveni
     + **Puntiación CVSS:** 9.0-8.7(Score Base) dependiendo de la versión tiene una nota puntuación distinta
     + **Descripción:** Esta vulnerabilidad afecta a la función *fromSetWirelessRepeat* del archivo */goform/WifiExtraSet*. La manipulación del argumento wpapsk_crypto conduce a un desbordamiento de búfer basado en pila. Es posible lanzar el ataque de forma remota.
     + **Contramedidas:**
-    
+        + Actualizar Open SSH 9.8p1 o superior.
 
 ****
 
@@ -244,7 +259,7 @@ Alguno de los errores que lo componen son:
 ****
 
 ##  Insecure Design 
-###  Descripción 
+### <u>Descripción</u> 
 El **diseño inseguro** se refiere a una falla en la etapa de diseño o implementación de un sistema o software, en la que no se pensaron o incluyeron controles de seguridad necesarios para defenderse de posibles ataques.
 Esto se suele confundir mucho con una implementación insegura, aunque no se refieren a la misma definición.
 
@@ -262,7 +277,7 @@ En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escr
 
 Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel de seguridad MEDIA.
 
-###  Contramedidas 
+### <u>Contramedidas</u>
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
 
 - Establecer y utilizar un catálogo de patrones de diseño seguros ("camino pavimnetado"), para que los equipos los utilicen en sus desarrollos sin tener que reinventar medidas de seguridad desde cero.
@@ -285,7 +300,7 @@ Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel 
 
 ### Software and Data Integrity Failures
 
-###  Descripción 
+### <u>Descripción</u> 
 
 Los fallos de integridad en software y datos ocurren el código o la infraestructura no están correctamente protegidos contra modificaciones no autorizadas. Estan pueden provenir deaplicaciones que dependan de repositorios, plugins, bibliotecas... También puede suceder cuando una aplicación distribuye actualizaciones de software sin una previa verificación de las mismas, lo que puede facilitar a los atacantes dristribuir versiones maliciosas. 
 
@@ -296,7 +311,7 @@ Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del
 
 Es clasificada con una puntuación de 7.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
-###  Contramedidas 
+### <u>Contramedidas</u>
 - Verificación del origen de los software o datos. Tendremos que comprobar que estos provienen de fuentes legitimas y no se han alterado.
 
 - Tendremos que asegurarnos que las bibliotecas y dependencias que utilizamos provienen de repositorios confiables. Comentar que para cargos de alto riesgo es mejor utilizarlos en repositorios locales previamente analizados.
