@@ -7,15 +7,19 @@ Un ejemplo contidiano podriía ser el siguiente: una constructora realiza los pl
 Si por el contrario, en la planificación se han planificado estas medidas de seguridad y en su posterior planificación no se han puesto las cerraduras eso se identificaría con una implementación insegura.  
 
 ### Identificación de CVEs
-+ ####  CVE-2022-44004       	
-Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña.  
++ ####  CVE-2022-44004 
+    + **Gravedad**: ALTA  
+    + **Puntuación CVSS**: 9.8 (Base Score)  
+    + **Descripción**: Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña. 
+    + **Contramedidas**: 
 
-Es clasificada con una puntuación de 9.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
+
 
 + #### CVE-2023-21367	
-En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
-
-Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel de seguridad MEDIA.
+    + **Gravedad**: MEDIA  
+    + **Puntuación CVSS**: 5.5 (Base Score)  
+    + **Descripción**: En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
+    + **Contramedida**: 
 
 ###  Contramedidas 
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
@@ -46,6 +50,10 @@ Los fallos de integridad en software y datos ocurren el código o la infraestruc
 
 ### Identificación de CVEs
 + #### CVE-2022-31609
+    + **Gravedad**: ALTA   
+    + **Puntuación CVSS**: 7.8 (Base Score)  
+    + **Descripción**: Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitia que una máquina invitada pudiese asignar recursos de los cuales no tenia autorización. Esto podía llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o compremeter el sistema.
+    + **Contramedida**:
 
 Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitia que una máquina invitada pudiese asignar recursos de los cuales no tenia autorización. Esto podía llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o compremeter el sistema. 
 
