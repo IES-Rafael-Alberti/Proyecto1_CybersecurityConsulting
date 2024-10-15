@@ -10,7 +10,7 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
 ### Identificación de CVEs
 + ####  [CVE-2022-44004](https://www.cve.org/CVERecord?id=CVE-2022-44004) 
     + **Gravedad**: ALTA  
-    + **Puntuación CVSS**: 9.8 (Base Score)  
+    + **[Puntuación CVSS](https://www.incibe.es/en/incibe-cert/early-warning/vulnerabilities/cve-2022-44004)**: 9.8 (Base Score)    
     + **Descripción**: Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña. 
     + **Contramedidas**: Tras una investigación hemos visto que no hay información relacionada con medidas para prevenir este CVE. Aunque viendo la fuente del problema habría algunas medidas interesantes.
         + Utilizar autenticación de multifactor.
@@ -21,7 +21,7 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
 
 + #### [CVE-2023-21367](https://www.cve.org/CVERecord?id=CVE-2023-21367)	
     + **Gravedad**: MEDIA  
-    + **Puntuación CVSS**: 5.5 (Base Score)  
+    + **[Puntuación CVSS](https://www.incibe.es/incibe-cert/alerta-temprana/vulnerabilidades/cve-2023-21367)**: 5.5 (Base Score)  
     + **Descripción**: En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
     + **Contramedida**:
         + La única contramedida que nos brindan es la de actualizar al siguiente parche para solucionar las fallas del sistema. [Referencia](https://source.android.com/docs/security/bulletin/android-14?hl=es)
