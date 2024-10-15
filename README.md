@@ -11,7 +11,10 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
     + **Gravedad**: ALTA  
     + **Puntuación CVSS**: 9.8 (Base Score)  
     + **Descripción**: Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña. 
-    + **Contramedidas**: 
+    + **Contramedidas**: Tras una investigación hemos visto que no hay información relacionada con medidas para prevenir este CVE. Aunque viendo la fuente del problema habría algunas medidas interesantes.
+        + Utilizar autenticación de multifactor.
+        + Fortalecer los procesos de restablecimiento de contraseña.
+        + Hemos encontrado un error similar que ocurrio en CISCO, en el cuál como en la malloría de CVE nos aconseja actualizar el software a versiones donde se hayan parcheado dichos problemas. [Referencia](https://ostec.blog/es/generico/cve-2024-20419-vulnerabilidad-critica-en-cisco-smart-software-manager/#:~:text=Mitigaci%C3%B3n%20y%20correcci%C3%B3n)
 
 
 
@@ -19,7 +22,8 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
     + **Gravedad**: MEDIA  
     + **Puntuación CVSS**: 5.5 (Base Score)  
     + **Descripción**: En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
-    + **Contramedida**: 
+    + **Contramedida**:
+        + La única contramedida que nos brindan es la de actualizar al siguiente parche para solucionar las fallas del sistemas. [Referencia](https://source.android.com/docs/security/bulletin/android-14?hl=es)
 
 ###  Contramedidas 
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
@@ -53,7 +57,8 @@ Los fallos de integridad en software y datos ocurren el código o la infraestruc
     + **Gravedad**: ALTA   
     + **Puntuación CVSS**: 7.8 (Base Score)  
     + **Descripción**: Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitia que una máquina invitada pudiese asignar recursos de los cuales no tenia autorización. Esto podía llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o compremeter el sistema.
-    + **Contramedida**:
+    + **Contramedida**: 
+     + Como en la malloria de CVEs las contramedidas propuesta son la actualización del software a uno más reciente y estar atentos a futuros parches. [Referencia](https://nvidia.custhelp.com/app/answers/detail/a_id/5383)
 
 Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitia que una máquina invitada pudiese asignar recursos de los cuales no tenia autorización. Esto podía llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o compremeter el sistema. 
 
