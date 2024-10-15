@@ -56,7 +56,7 @@ https://example.com/app/accountInfo?acct=notmyacct
 
 ### Identificación de CVEs
 
-+ ####  CVE-2024-4263 
++ ####  [CVE-2024-4263](https://www.cve.org/CVERecord?id=CVE-2024-4263)
     + **Gravedad:** Media.
     + **Puntuación CVSS:** 5.4 (Base Score).
     + **Descripción:** Este es una de las vulnerabilidades que hemos encontrado, la cuál los usuarios con pocos privilegios con solo permisos de edición (EDIT) pueden eliminar cualquier dato. Este problema está por la poca validación de las solicitudes DELEte que con tan sólo permisos EDIT puede hacer eliminaciones de datos no autorizados. Aunque en la documentación oficial sólo pone que los usuarios con permiso EDIT **solo** pueden leer y actualizar datos, **NO** eliminarlos.
@@ -67,7 +67,7 @@ https://example.com/app/accountInfo?acct=notmyacct
         + Monitorear los registros y actividades de usuarios con permisos de edición para identificar cualquier actividad inusual o no autorizada.
 
 
-+ ####  CVE-2024-22234   
++ ####  [CVE-2024-22234](https://www.cve.org/CVERecord?id=CVE-2024-22234)   
     + **Gravedad:** Alto.
     + **Puntuación CVSS:**  7.4 (Base Score).
     + **Descripción:** Esta vulnerabilidad trata de que cuando utilizas el método *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)* directamente se le pasa un parámetro de autenticación que sea nulo y devuelve un retorno verdadero erróneo.
@@ -123,14 +123,14 @@ Estas son algunas de las cosas que tenemos que verificar para saber cómo preven
 
 ### Identificación de CVEs
 
-+ ####  CVE-2024-45402
++ ####  [CVE-2024-45402](https://www.cve.org/CVERecord?id=CVE-2024-45402)
     + **Gravedad:** Alta.
     + **Puntuación CVSS:** 8.6 (Base Score)
     + **Descripción:** Picotls es una biblioteca de protocolos TLS que permite a los usuarios seleccionar diferentes backend criptográficos en función de su uso. Cuando analizas un mensaje TLS falsificado, los picolts pueden liberar la misma memoria dos veces. Este doble liberación de memoria ocurre durante la eliminación de múltiples objetos sin ninguna llamada intermedia a malloc. Típicamente, esto desencadena la implementación de malloc para detectar el error y abortar el proceso. Pero dependiendo de las partes internas de malloc y el backend criptográfico que se esté utilizando, la falla podría conducir a un escenario de uso después de la liberación lo que permitiría la ejecución arbitraria del código.
     + **Contramedidas:** 
         + Actualizar Picotls.
    
-+ ####  CVE-2024-6189
++ ####  [CVE-2024-6189](https://www.cve.org/CVERecord?id=CVE-2024-6189)
     + **Gravedad:** Alta
     + **Puntuación CVSS:** 9.0-8.7(Score Base) dependiendo de la versión tiene una nota puntuación distinta
     + **Descripción:** Esta vulnerabilidad afecta a la función *fromSetWirelessRepeat* del archivo */goform/WifiExtraSet*. La manipulación del argumento wpapsk_crypto conduce a un desbordamiento de búfer basado en pila. Es posible lanzar el ataque de forma remota.
