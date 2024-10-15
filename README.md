@@ -186,18 +186,20 @@ Entre los errores más comunes, se encuentran los siguientes:
 ### Identificación de CVEs
 
 + ####  CVE - 2024-26092 
-    + Gravedad: Medio
-    + Puntuación CVSS: 5.4 (Base Score)
-    + Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en
+    + **Gravedad**: Medio
+    + **Puntuación CVSS**: 5.4 (Base Score)
+    + **Descripción**:  Adobe experience Manager versión 6.5.20 y anterior estan afectados por una vulnerabilidad Cross-Site Scripting que puede aprovechar un atacante para inyectar scripts maliciosos en
   campos de formularios vulnerables.
 
+    + **Contramedida**:La manera de solucionar este  problema es ctualizar Adobe Experience Manager a la versión 6.5.21 o posterior, ya que la vulnerabilidad se corrige en esa versión.
+
 + #### CVE-2024-35933
-    + Gravedad: Medio
-    + Puntuación CVSS: 5.5 (Base Score)
-    + CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
+    + **Gravedad**: Medio
+    + **Puntuación CVSS**: 5.5 (Base Score)
+    + **Descripción**: CVE-2024-35933 es una vulnerabilidad relacionada con el kernel de Linux, específicamente en la función Bluetooth de dispositivos Intel. El problema surge debido a una "dereferencia de puntero nulo" en la función btintel_read_version, que se usa para leer la versión de dispositivos Intel a través de Bluetooth.
+    +  **Contramedida**: Se requiere actualizar a una versión del kernel a una que incluya este parche. El kernel 6.1.90-1 o superior ya incorpora la solución a esta vulnerabilidad. 
 
 ### <u>Contramedidas</u>
-
 + Crear una plataforma con el contenido mínimo y necesario, evitando instalar características, componentes o documentación innecesaria.
 + Establecer una tarea que revise y actualice las configuraciones relacionadas con todas las notas de seguridad, actualizaciones y parches
 + Segmentar la arquitectura de la aplicación implementando contenedores o una lista de control de acceso en la nube (ACLs)
@@ -219,16 +221,18 @@ Alguno de los errores que lo componen son:
 
 ### Identificación de CVEs
 
-+ ####  CVE 2024-27395 
-    + Gravedad: Medio
-    + Puntuación CVSS: 5.5 (Base Score)
-    + CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
++ ####  CVE 2024-25103
+    + **Gravedad**: Medio
+    + **Puntuación** CVSS: 5.5 (Base Score)
+    + **Descripción**:  CVE-2024-25103 es una vulnerabilidad que afecta al software AppSamvid, relacionado con el uso de componentes obsoletos y vulnerables. Un atacante que cuente con privilegios administrativos locales en el sistema objetivo podría explotar esta vulnerabilidad colocando archivos DLL maliciosos.
+    + **Contramedida**: La empresa encargada de AppSamvid no ha dado ninguna solucion a dia de hoy a 15/10/2024.
 
 + ####  CVE-2022-24740 
-    + Gravedad: Alto
-    + Puntuación CVSS: 7.5 (Base Score)
-    + Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
-
+    + **Gravedad**: Alto
+    + **Puntuación CVSS**: 7.5 (Base Score)
+    + **Descripción**:  Entre las versiones 14.0.0-alpha.5 y 15.0.0-alpha.0 de Volto, es posible que un atacante, después de haber atraído a un usuario al sitio de ataque, reemplace su cookie de autenticación por la cookie de autenticación del atacante. Esto le daría al atacante control sobre la cuenta y los privilegios de ese usuario.
+    + **Contramedida**: 
+  
 ### <u>Contramedidas</u>
 
 + Eliminar las dependencias, funciones, archivos y documentación en desuso.
