@@ -26,7 +26,19 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 + Configuraciones incorrectas de CORS (uso compartido de recursos de origen cruzado) que permiten el acceso a APIs desde orígenes no autorizados o confiables.
 
-###  Contramedidas 
+**Ejemplo:**  
+La aplicación utiliza datos no verificados en una llamada SQL que accede a información de una cuenta:
+```
+ pstmt.setString(1, request.getParameter("acct"));
+ ResultSet results = pstmt.executeQuery( );
+```
+Un atacante simplemente modifica el parámetro 'acct' en el navegador para enviar el número de cuenta que desee. Si no es verificado correctamente, el atacante puede acceder a la cuenta de cualquier usuario.
+```
+https://example.com/app/accountInfo?acct=notmyacct
+```
+
+
+### <u>Contramedidas</u>
 
 + Unas de las posibilidades que tenemos es que denegemos por defecto todo menos los recursos públicos.
 
@@ -40,28 +52,32 @@ Esta vulnerabilidad lo que hace es que puedan actuar fuera de los permisos que s
 
 + El control de acceso debe implementar su cumplimiento a nivel de dato y no permitir que el usuario pueda crear, leer, actulizar o borrar cualquier dato.
 
-Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
+
 
 ### Identificación de CVEs
 
 + ####  CVE-2024-4263 
+    + **Gravedad:** Media.
+    + **Puntiación CVSS:** 5.4 (Base Score).
+    + **Descripción:** Este es una de las vulnerabilidades que hemos encontrado la cuál los usuarios con pocos privilegios con solo permisos de edición (EDIT) pueden eliminar cualquier dato. Este problema está por la poca validación de las solicitudes DELEte que con tan sólo permisos EDIT puede hacer eliminaciones de datos no autorizados. Aunque en la documentación oficial sólo pone que los usuarios con permiso EDIT **solo** pueden leer y actualizar datos, **NO** eliminarlos.
 
-    Este es una de las vulnerabilidades que hemos encontrado la cuál los usuarios con pocos privilegios con solo permisos de edición (EDIT) pueden eliminar cualquier dato. Este problema está por la poca validación de las solicitudes DELEte que con tan sólo permisos EDIT puede hacer eliminaciones de datos no autorizados.
+    + **Contramedidas**:
+        + Actualizar a la versión 2.10.1 o superior de MLflow, ya que esta versión corrige el fallo de control de acceso.
+        + Revisar los permisos de los usuarios con acceso a MLflow, asegurándote de limitar los permisos de edición solo a aquellos que realmente lo necesiten.
+        + Monitorear los registros y actividades de usuarios con permisos de edición para identificar cualquier actividad inusual o no autorizada.
 
-    Aunque en la documentación oficial sólo pone que los usuarios con permiso EDIT **solo** pueden leer y actualizar datos, **NO** eliminarlos
-
-    Según CVSS nos encontramos contra una vulnerabilidad **MEDIA** con una nota de **5.4**
 
 + ####  CVE-2024-22234   
-    Esta vulnerabilidad trata de que cuando utilizas el método *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)* directamente se le pasa un parámetro de autenticación que sea nulo y devuelve un retorno verdadero erróneo.
+    + **Gravedad:** Alto.
+    + **Puntuación CVSS:**  7.4 (Base Score).
+    + **Descripción:** Esta vulnerabilidad trata de que cuando utilizas el método *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)* directamente se le pasa un parámetro de autenticación que sea nulo y devuelve un retorno verdadero erróneo.
 
-    La forma en la que no es vulnerable si cualquiera de los siguientes es cierto:  
-    + La aplicación no utiliza *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)*
-    directamente. 
-    + La aplicación no pasa nula a *AuthenticationTrustResolver.isFullyAuthenticated*
-    + La aplicación solo usa *isFullyAuthenticated*
+    + **Contramedidas**:
+        + La aplicación no utiliza *AuthenticationTrustResolver.isFullyAuthenticated(Authentication)*
+        directamente. 
+        + La aplicación no pasa nula a *AuthenticationTrustResolver.isFullyAuthenticated*
+        + La aplicación solo usa *isFullyAuthenticated*
 
-    Según CVSS nos encontramos con una vulnerabilidad **ALTA** con una nota de **7.4**
 
 ****
 
@@ -69,7 +85,7 @@ Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
 
 ### <u>Descripción</u>
 
-Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas, números dde tarjetas de crédditom registros médicos, información personal, etc. Ya que estas series de datos deben tener una protección adiccional, principalmente si están sujeto a  leyes de privacidad como pueden ser (Reglamento General de Protección de Datos de la UE) o regulaciones como (protección de datos financieros como el Estándar de Seguridad de Datos de PCI -PCI DSS-). Algunas de las preguntas que nos tenemos que hacer para estos datos son:
+Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas, números de tarjetas de créditos, registros médicos, información personal, etc. Ya que estas series de datos deben tener una protección adiccional, principalmente si están sujeto a  leyes de privacidad como pueden ser (Reglamento General de Protección de Datos de la UE) o regulaciones como (protección de datos financieros como el Estándar de Seguridad de Datos de PCI -PCI DSS-). Algunas de las preguntas que nos tenemos que hacer para estos datos son:
 
 + ¿Se utilizan algoritmos o protocolos criptográficos antiguos o débiles de forma predeterminada o en código antiguo?
 + ¿Se utilizan claves criptográficas predeterminadas, se generan o reutilizan claves criptográficas débiles, o es inexistente la gestión o rotación de claves adecuadas?
@@ -79,21 +95,10 @@ Esta vulnerabilidad de lo que consiste es poder mirar los datos  de contraseñas
 + ¿Las contraseñas se utilizan como claves criptográficas en ausencia de una función de derivación de claves a partir de contraseñas?
 + ¿Se utilizan funciones hash en obsoletas, como MD5 o SHA1, o se utilizan funciones hash no criptográficas cuando se necesitan funciones hash criptográficas?
 
-### Identificación de CVEs
+**Ejemplo**
 
-+ ####  CVE-2024-45402 
-
-    Picotls es una biblioteca de protocolos TLS que permite a los usuarios seleccionar diferentes backend criptográficos en función de su uso. Cuando analizas un mensaje TLS falsificado, los picolts pueden liberar la misma memoria dos veces. Este doble liberación de memoria ocurre durante la eliminación de múltiples objetos sin ninguna llamada intermedia a malloc. Típicamente, esto desencadena la implementación de malloc para detectar el error y abortar el proceso. Pero dependiendo de las partes internas de malloc y el backend criptográfico que se este utilizando, la falla prodría conducir a un escenario de uso despues de la liberación lo que permitiría la ejecución arbitaria de codigo.
-
-    Según CVSS estamos ante una vulnerabilidad de gravedad **ALTA** con una puntuación de **8.6**
-
-+ ####  CVE-2024-6189 
-
-    Esta vulnerabilidad afecta a la función *fromSetWirelessRepeat* del archivo */goform/WifiExtraSet*. La manipulación del argumento wpapsk_crypto conduce a un desbordamiento de búfer basado en pila. Es posible lanzar el ataque de forma remota.
-
-    Esta vulnerabiliddad desde la versión 2.0 siguiendo la versión 3.0, 3.1, 4.0 son todas vulnerabilidades de gravedad **ALTA** con estas respectivas notas **9.0, 8.8, 8.8, 8.7**
-
-###  Contramedidas 
+Una aplicación cifra los números de tarjetas de crédito en una base de datos mediante el cifrado automático de la base de datos. Sin embargo, estos datos se descifran automáticamente cuando se recuperan, lo que permite que por una falla de inyección SQL se recuperen números de tarjetas de crédito en texto sin cifrar.
+### <u>Contramedidas</u>
 
 Estas son algunas de las cosas que tenemos que verificar para saber como prevenir estos ataques.
 
@@ -115,7 +120,22 @@ Estas son algunas de las cosas que tenemos que verificar para saber como preveni
 
 + Evite las funciones criptográficas y los esquemas de relleno(padding) en desuso, como MD5, SHA1, PKCS número 1 v1.5.
 
-Aquí podemos encontrar varios casos reales de vulnerabilidades de este tipo:
+
+### Identificación de CVEs
+
++ ####  CVE-2024-45402
+    + **Gravedad:** Alta.
+    + **Puntuación CVSS:** 8.6 (Base Score)
+    + **Descripción:** Picotls es una biblioteca de protocolos TLS que permite a los usuarios seleccionar diferentes backend criptográficos en función de su uso. Cuando analizas un mensaje TLS falsificado, los picolts pueden liberar la misma memoria dos veces. Este doble liberación de memoria ocurre durante la eliminación de múltiples objetos sin ninguna llamada intermedia a malloc. Típicamente, esto desencadena la implementación de malloc para detectar el error y abortar el proceso. Pero dependiendo de las partes internas de malloc y el backend criptográfico que se este utilizando, la falla prodría conducir a un escenario de uso despues de la liberación lo que permitiría la ejecución arbitaria de codigo.
+    + **Contramedidas:** 
+        + Actualizar Picotls.
+   
++ ####  CVE-2024-6189
+    + **Gravedad:** Alta
+    + **Puntiación CVSS:** 9.0-8.7(Score Base) dependiendo de la versión tiene una nota puntuación distinta
+    + **Descripción:** Esta vulnerabilidad afecta a la función *fromSetWirelessRepeat* del archivo */goform/WifiExtraSet*. La manipulación del argumento wpapsk_crypto conduce a un desbordamiento de búfer basado en pila. Es posible lanzar el ataque de forma remota.
+    + **Contramedidas:**
+        + Actualizar Open SSH 9.8p1 o superior.
 
 ****
 
@@ -254,7 +274,7 @@ Alguno de los errores que lo componen son:
 ****
 
 ##  Insecure Design 
-###  Descripción 
+### <u>Descripción</u> 
 El **diseño inseguro** se refiere a una falla en la etapa de diseño o implementación de un sistema o software, en la que no se pensaron o incluyeron controles de seguridad necesarios para defenderse de posibles ataques.
 Esto se suele confundir mucho con una implementación insegura, aunque no se refieren a la misma definición.
 
@@ -272,7 +292,7 @@ En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escr
 
 Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel de seguridad MEDIA.
 
-###  Contramedidas 
+### <u>Contramedidas</u>
 - Incorporar medidas de seguridad en todas las fases del desarrollo de software. Desde la simple planificación hasta el despliegue de la misma, incluyendo la colaboración con profesionales en el campo que pueden ir evaluando la seguridad de las diferentes etapas.
 
 - Establecer y utilizar un catálogo de patrones de diseño seguros ("camino pavimnetado"), para que los equipos los utilicen en sus desarrollos sin tener que reinventar medidas de seguridad desde cero.
@@ -295,7 +315,7 @@ Es clasificada con una puntuación de 5.5 en CVSS, lo que la coloca en un nivel 
 
 ### Software and Data Integrity Failures
 
-###  Descripción 
+### <u>Descripción</u> 
 
 Los fallos de integridad en software y datos ocurren el código o la infraestructura no están correctamente protegidos contra modificaciones no autorizadas. Estan pueden provenir deaplicaciones que dependan de repositorios, plugins, bibliotecas... También puede suceder cuando una aplicación distribuye actualizaciones de software sin una previa verificación de las mismas, lo que puede facilitar a los atacantes dristribuir versiones maliciosas. 
 
@@ -306,7 +326,7 @@ Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del
 
 Es clasificada con una puntuación de 7.8 en CVSS, lo que la coloca en un nivel de seguridad ALTA.
 
-###  Contramedidas 
+### <u>Contramedidas</u>
 - Verificación del origen de los software o datos. Tendremos que comprobar que estos provienen de fuentes legitimas y no se han alterado.
 
 - Tendremos que asegurarnos que las bibliotecas y dependencias que utilizamos provienen de repositorios confiables. Comentar que para cargos de alto riesgo es mejor utilizarlos en repositorios locales previamente analizados.
