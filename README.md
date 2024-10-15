@@ -1,12 +1,13 @@
 
 # Proyecto1_CybersecurityConsulting
 ## Introducción
-La empresa TrustShield Financial nos ha contratado para la realización de un análisisde su estructura y así identificar vulnerabilidades que puedan poner en peligro la confidencialidad, integridad y disponibilidad de sus datos.
+La empresa TrustShield Financial nos ha contratado para la realización de un análisis de su estructura y así identificar vulnerabilidades que puedan poner en peligro la confidencialidad, integridad y disponibilidad de sus datos.
 
-Hemos decidido centrarnos en las vulnerabilidades de sus aplicaciones web ya que esta es la cara que da la empresa a internet, y por lo tanto, a gran parte de sus usuarios y a posibles atacantes.
+Nuestro equipo a tomado la decisión de centrar nuestro estudio en el análisis de las posibles vulnerabilidades de las aplicaciones web de una empresa. Esta elección se debe a que estas aplicaciones son la interfaz principal de la empresa en el entorno digital, siendo su punto de contacto con una gran parte de sus usuarios y con posibles atacantes que pudieran intentar comprometer la seguirdad del sistema.
 
 Las categorías de vulnerabilidad han sido elegidas por su número de incidentes en los últimos años y como de graves serían para TrustShield Financial en caso de sufrirlas.
 ## Categorías de vulnerabilidades
+Para las categorías de vulnerabilidades de las aplicaciones web nos hemos basado principalmente en el [OWASP Top 10 de 2021](https://owasp.org/www-project-top-ten/) debido a que este proyecto de OWASP recoge las vulnerabilidades más frecuentes y/o peligrosas en relación a las aplicaciones web.
 ****
 
 ## Broken Access Control
@@ -151,14 +152,13 @@ Con las facilidades y conveniencias proporcionadas a los usuarios por las aplica
 Esta vulnerabilidad sería muy grave para TrustShield Financial, ya que un atacante podría acceder o incluso manipular información confidencial simplemente cambiando una URL si tiene algo de conocimento sobre la red de la empresa.
 
 ### Identificación de CVEs
-+ ####  CVE-2021-21973 : Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
-Tiene un CVSS de 5'3.
++ ####  [CVE-2021-21973](https://www.cve.org/CVERecord?id=CVE-2021-21973)
+    + Gravedad: Medio
+    + Puntuación CVSS: 5.3 (Base Score)
+    + Descripción: Este CVE registra una vulnerabilidad de SSRF encontrada en el cliente de vSphere debido a que no se valida correctamente las URLs en un plugin de vCenter Server. Esta vulnerabilidad puede permitir a un atacante con acceso al puerto 443 obtener información sensible enviando una solicitud POST. Esta vulnerabilidad afecta a VMware vCenter Server (7.x antes de 7.0 U1c, 6.7 antes de 6.7 U3l y 6.5 antes de 6.5 U3n) y a VMware Cloud Foundation (4.x antes de 4.2 y 3.x antes de 3.10.1.2).
+    + Contramedidas: A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas.
 
 ### <u>Contramedidas</u>
-+ ####  CVE-2021-21973 
-    
-    A día de hoy esta vulnerabilidad ya está parcheada, por lo que la mejor solución sería actualizar a una de las versiones más actuales no afectadas. En el caso de que no fuera así podríamos probar varias cosas desde la capa de red y desde la e aplicación:
-
     Desde la capa de red podríamos:
     + Separar los sistemas que se encargan de las solicitudes externas del resto de la red, reduciendo el impacto de un SSRF.
     + Limitar el tráfico de nuestra intranet configurando nuestro firewall para que deniegue por defecto salvo para el tráfico esencial.
