@@ -8,7 +8,7 @@ Un ejemplo cotidiano podría ser el siguiente: una constructora realiza los plan
 Si por el contrario, en la planificación se han planificado estas medidas de seguridad y en su posterior planificación no se han puesto las cerraduras eso se identificaría con una implementación insegura.  
 
 ### Identificación de CVEs
-+ ####  CVE-2022-44004 
++ ####  [CVE-2022-44004](https://www.cve.org/CVERecord?id=CVE-2022-44004) 
     + **Gravedad**: ALTA  
     + **Puntuación CVSS**: 9.8 (Base Score)  
     + **Descripción**: Se descubrió un problema en BACKCLICK Professional 5.9.63. Debido a un diseño inseguro o a la falta de autenticación, los atacantes no autenticados pueden completar el proceso de restablecimiento de contraseña para cualquier cuenta y establecer una nueva contraseña. 
@@ -19,7 +19,7 @@ Si por el contrario, en la planificación se han planificado estas medidas de se
 
 
 
-+ #### CVE-2023-21367	
++ #### [CVE-2023-21367](https://www.cve.org/CVERecord?id=CVE-2023-21367)	
     + **Gravedad**: MEDIA  
     + **Puntuación CVSS**: 5.5 (Base Score)  
     + **Descripción**: En Scudo, existe una forma posible de explotar ciertos problemas de lectura/escritura OOB en el montón debido a una implementación/diseño inseguro. Esto podría provocar la divulgación de información local sin necesidad de privilegios de ejecución adicionales. No se necesita la interacción del usuario para la explotación.
@@ -57,7 +57,7 @@ Los fallos de integridad en software y datos ocurren cuando el código o la infr
 Tú utilizas una aplicación y dicha actualización recibe actualizaciones de la compañía de la cuál ha sido creada y tu al recibir las notificaciones instalas dichas actualizaciones. Un día un atacante decide escribir código malicioso en una actualización y te la envía a tu teléfono. Tú como siempre, le das a actualizar la aplicación y el móvil ya ha sido infectado. Esto ha sido problema de que la aplicación no verificó de donde venía la actualización por lo que hay un fallo en el diseño y los datos del software. 
 
 ### Identificación de CVEs
-+ #### CVE-2022-31609
++ #### [CVE-2022-31609](https://www.cve.org/CVERecord?id=CVE-2022-31609)
     + **Gravedad**: ALTA   
     + **Puntuación CVSS**: 7.8 (Base Score)  
     + **Descripción**: Esta era una vulnerabilidad crítica en el software NVIDIA vGPU, en la parte del Virtual GPU Manager. Esta falla permitía que una máquina invitada pudiese asignar recursos de los cuales no tenía autorización. Esto podría llevar a violaciones de integridad y confidencialidad de los datos, permitir accesos no autorizados o comprometer el sistema.
